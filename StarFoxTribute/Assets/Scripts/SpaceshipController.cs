@@ -19,9 +19,20 @@ public class SpaceshipController : MonoBehaviour
 
     public GameObject pointer;
 
+    public Transform shootPointLeft;
+    public Transform shootPointRight;
+    public GameObject laserPrefab;
+
+    void Update(){
+        if (Input.GetMouseButtonDown(0)){
+            Shoot();
+        }
+    }
+    
     // Update is called once per frame
     void FixedUpdate()
     {
+
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
 
@@ -63,4 +74,12 @@ public class SpaceshipController : MonoBehaviour
         else if (x > 180) return 360 - max;
         else return max;
     }
+
+    void Shoot(){
+
+        Instantiate(laserPrefab, shootPointLeft.position, shootPointLeft.rotation);
+        Instantiate(laserPrefab, shootPointRight.position, shootPointRight.rotation);
+
+    }
 }
+

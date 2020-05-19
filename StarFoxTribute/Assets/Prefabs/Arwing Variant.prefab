@@ -34,8 +34,8 @@ MonoBehaviour:
   maxRotation: 30
   mouseZ: 50
   speed: 1
-  lookRange: 20
-  pointer: {fileID: 0}
+  lookRange: 10
+  pointer: {fileID: 6454921362378490393, guid: 589f71e9a951572418c87e92e39c1cd2, type: 3}
 --- !u!114 &321654868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 8428327aba2993b4e9c0584485ee0b1e,
         type: 3}
       propertyPath: m_Name
-      value: Arwing
+      value: Arwing Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8428327aba2993b4e9c0584485ee0b1e, type: 3}
