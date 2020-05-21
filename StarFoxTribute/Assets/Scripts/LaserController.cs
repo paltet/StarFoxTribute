@@ -18,4 +18,9 @@ public class LaserController : MonoBehaviour
     void Update() {
         Destroy(gameObject, destroyTimer);
     }
+
+    void OnCollisionEnter(Collision c) {
+        Destroy(gameObject);
+        //Debug.Log(c.collider);
+    }
 }
