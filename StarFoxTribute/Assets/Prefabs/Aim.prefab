@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6454921362378490394}
   - component: {fileID: 305463120}
   - component: {fileID: 305463119}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6454921362378490393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 8.029143, z: 5}
-  m_LocalScale: {x: 0.79999995, y: 0.8, z: 1}
+  m_LocalScale: {x: 0.7999999, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: c9313c36c8ec70049ad0a6e42ee9cbcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -92,7 +92,7 @@ SphereCollider:
   m_GameObject: {fileID: 6454921362378490393}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 2.1240351
   m_Center: {x: 0.22103067, y: 0, z: 0.25912577}
@@ -109,3 +109,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   main: {fileID: 0}
+  ship: {fileID: 0}
+  range: 0.2
