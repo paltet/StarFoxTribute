@@ -4885,6 +4885,7 @@ MonoBehaviour:
   shootPointRight: {fileID: 1354430763}
   laserPrefab: {fileID: 7828319054285866069, guid: e1fa34be4046c6a4881ca25fa29c2747,
     type: 3}
+  dolly: {fileID: 0}
 --- !u!114 &321654868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4909,17 +4910,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 8428327aba2993b4e9c0584485ee0b1e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -251.847
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8428327aba2993b4e9c0584485ee0b1e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -56.99652
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8428327aba2993b4e9c0584485ee0b1e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -52.02654
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8428327aba2993b4e9c0584485ee0b1e,
         type: 3}

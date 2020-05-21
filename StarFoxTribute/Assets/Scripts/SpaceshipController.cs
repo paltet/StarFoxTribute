@@ -11,8 +11,6 @@ public class SpaceshipController : MonoBehaviour
 
     public float maxRotation = 30f;
 
-    public float mouseZ = 1000f;
-
     public float speed = 0;
 
     public float lookRange = 10;
@@ -36,23 +34,17 @@ public class SpaceshipController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
 
-        Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mouseZ);
-        Vector3 lookPos = cam.ScreenToWorldPoint(mousePos);
-        lookPos.z = mouseZ;
-        lookPos.x = Mathf.Clamp(lookPos.x, transform.position.x - lookRange, transform.position.x + lookRange);
-        lookPos.y = Mathf.Clamp(lookPos.y, transform.position.y - lookRange, transform.position.y + lookRange);
+        //Debug.Log(Input.mousePosition.x);
 
-        Debug.Log(lookPos);
-
-        pointer.transform.position = lookPos;
-
+        //pointer.transform.position = lookPos;
+        //pointer.transform.rotation = cam.transform.rotation;
 
         xVelocity = speed * horizontal;
         yVelocity = speed * vertical;
 
         transform.Rotate(new Vector3(yVelocity, 0, -xVelocity));
 
-        transform.Translate(new Vector3(xVelocity, yVelocity, 0), Space.World);
+        transform.Translate(new Vector3(xVelocity, yVelocity, 0), cam.transform);
 
         var pos = Camera.main.WorldToViewportPoint(transform.position);
         pos.x = Mathf.Clamp(pos.x, 0.07f, 0.93f);
@@ -60,11 +52,11 @@ public class SpaceshipController : MonoBehaviour
         transform.position = Camera.main.ViewportToWorldPoint(pos);
 
 
-        Vector3 currentRotation = transform.rotation.eulerAngles;
-        this.transform.LookAt(lookPos);
+        Vector3 currentRotation = transform.localRotation.eulerAngles;
+        this.transform.LookAt(pointer.transform);
         currentRotation.z = clampRotation(currentRotation.z, maxRotation);
-        currentRotation.x = transform.rotation.eulerAngles.x;
-        currentRotation.y = transform.rotation.eulerAngles.y;
+        currentRotation.x = transform.localRotation.eulerAngles.x;
+        currentRotation.y = transform.localRotation.eulerAngles.y;
         transform.localRotation = Quaternion.Euler (currentRotation);
     }
 
