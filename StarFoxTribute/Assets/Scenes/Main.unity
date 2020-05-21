@@ -133,12 +133,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 9208709144366691256}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &321654868 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4229263658992129045, guid: 853050c0a2f515a40aa72b0c7fb9a1ac,
-    type: 3}
-  m_PrefabInstance: {fileID: 9208709144366691256}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,66 +322,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ship: {fileID: 321654864}
---- !u!1 &1354430762
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1354430763}
-  m_Layer: 0
-  m_Name: ShootPointRight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1354430763
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354430762}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.85, y: 0.25, z: 1.88}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 321654868}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1464700905
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1464700906}
-  m_Layer: 0
-  m_Name: ShootPointLeft
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1464700906
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464700905}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.88, y: 0.25, z: 1.88}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 321654868}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6454921362679168340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -472,23 +406,6 @@ PrefabInstance:
       propertyPath: pointer
       value: 
       objectReference: {fileID: 305463117}
-    - target: {fileID: 321654866, guid: 853050c0a2f515a40aa72b0c7fb9a1ac, type: 3}
-      propertyPath: shootPoint
-      value: 
-      objectReference: {fileID: 1354430763}
-    - target: {fileID: 321654866, guid: 853050c0a2f515a40aa72b0c7fb9a1ac, type: 3}
-      propertyPath: laserPrefab
-      value: 
-      objectReference: {fileID: 7828319054285866069, guid: e1fa34be4046c6a4881ca25fa29c2747,
-        type: 3}
-    - target: {fileID: 321654866, guid: 853050c0a2f515a40aa72b0c7fb9a1ac, type: 3}
-      propertyPath: shootPointLeft
-      value: 
-      objectReference: {fileID: 1464700906}
-    - target: {fileID: 321654866, guid: 853050c0a2f515a40aa72b0c7fb9a1ac, type: 3}
-      propertyPath: shootPointRight
-      value: 
-      objectReference: {fileID: 1354430763}
     - target: {fileID: 930562024103421446, guid: 853050c0a2f515a40aa72b0c7fb9a1ac,
         type: 3}
       propertyPath: m_Name

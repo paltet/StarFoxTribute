@@ -7,6 +7,10 @@ public class SpaceshipStabilizer : MonoBehaviour
     public float stability = 0.3f;
     public float speed = 2f;
 
+    void Start() {
+        Cursor.visible = false;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
