@@ -1,7 +1,18 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: d0e454d7aca7cad4ca784a418b06e071
 folderAsset: yes
 DefaultImporter:
+=======
+<<<<<<< HEAD:StarFoxTribute/Assets/Prefabs/Arwing Variant.prefab.meta
+guid: 853050c0a2f515a40aa72b0c7fb9a1ac
+PrefabImporter:
+=======
+guid: d0e454d7aca7cad4ca784a418b06e071
+folderAsset: yes
+DefaultImporter:
+>>>>>>> parent of af2623c... Merge branch 'ID-0012' into develop:StarFoxTribute/Assets/Prefabs/Arwing/Arwing.meta
+>>>>>>> parent of af2623c... Merge branch 'ID-0012' into develop
   externalObjects: {}
   userData: 
   assetBundleName: 
