@@ -476,18 +476,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4382750169751396601}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1344231003 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3115578500293910306, guid: 12a94f8d3c51c8c43a3219580af6aa98,
-    type: 3}
-  m_PrefabInstance: {fileID: 4382750169751396601}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344231000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1399723182
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,11 +581,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3608709266264099224, guid: 12a94f8d3c51c8c43a3219580af6aa98,
-        type: 3}
-      propertyPath: slider
-      value: 
-      objectReference: {fileID: 1344231003}
     - target: {fileID: 4382750167955646634, guid: 12a94f8d3c51c8c43a3219580af6aa98,
         type: 3}
       propertyPath: ship
