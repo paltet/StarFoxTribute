@@ -15,19 +15,27 @@ public class SpaceshipController : MonoBehaviour
 
     public float lookRange = 10;
 
-    public GameObject pointer;
 
+    public GameObject pointer;
     public Transform shootPointLeft;
     public Transform shootPointRight;
     public GameObject laserPrefab;
-
     public Transform resetPoint;
+
+    public float maxHealth = 100;
+    public float currentHealth;
+
+    public GameObject HealthBar;
+
+
+    void Start(){
+        currentHealth = maxHealth;
+    }
 
     void Update(){
         if (Input.GetMouseButtonDown(0)){
             Shoot();
         }
-
     }
     
     // Update is called once per frame
@@ -80,12 +88,21 @@ public class SpaceshipController : MonoBehaviour
     void OnTriggerEnter(Collider other){
 
         if (other.gameObject.tag == "Terrain"){
-            ResetPosition();    
+            ResetPosition();
+            modifyHealth(-5);    
         }
     }
 
     void ResetPosition(){
         transform.position = resetPoint.position;
+    }
+
+    void modifyHealth(float change){
+        currentHealth += change;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        HealthBarController h = HealthBar.GetComponent<HealthBarController>();
+        h.updateSlider(currentHealth/maxHealth);
     }
 }
 

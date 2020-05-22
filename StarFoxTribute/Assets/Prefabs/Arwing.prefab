@@ -4861,6 +4861,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &168865592
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930562024103421446}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.6502106, y: 0.7278557, z: 5.529653}
+  m_Center: {x: -0.032581873, y: -0.13607216, z: -0.8598433}
 --- !u!114 &321654866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4873,19 +4886,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d1bc0275494b54a9c4464112f61351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xVelocity: 0
-  yVelocity: 0
-  cam: {fileID: 0}
   maxRotation: 30
-  mouseZ: 50
-  speed: 1
+  speed: 0.5
   lookRange: 10
   pointer: {fileID: 0}
   shootPointLeft: {fileID: 1464700906}
   shootPointRight: {fileID: 1354430763}
   laserPrefab: {fileID: 7828319054285866069, guid: e1fa34be4046c6a4881ca25fa29c2747,
     type: 3}
-  dolly: {fileID: 0}
+  resetPoint: {fileID: 0}
+  maxHealth: 100
+  currentHealth: 0
+  HealthBar: {fileID: 0}
 --- !u!114 &321654868
 MonoBehaviour:
   m_ObjectHideFlags: 0
