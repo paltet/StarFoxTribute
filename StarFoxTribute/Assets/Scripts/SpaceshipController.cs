@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class SpaceshipController : MonoBehaviour
     {
-    public float xVelocity = 0;
-    public float yVelocity = 0;
+    private float xVelocity = 0;
+    private float yVelocity = 0;
 
-    public Camera cam;   
+    //public Camera cam;   
 
     public float maxRotation = 30f;
 
-    public float speed = 0;
+    public float speed = 1;
 
     public float lookRange = 10;
 
@@ -21,10 +21,13 @@ public class SpaceshipController : MonoBehaviour
     public Transform shootPointRight;
     public GameObject laserPrefab;
 
+    public Transform resetPoint;
+
     void Update(){
         if (Input.GetMouseButtonDown(0)){
             Shoot();
         }
+
     }
     
     // Update is called once per frame
@@ -44,7 +47,7 @@ public class SpaceshipController : MonoBehaviour
 
         transform.Rotate(new Vector3(yVelocity, 0, -xVelocity));
 
-        transform.Translate(new Vector3(xVelocity, yVelocity, 0), cam.transform);
+        transform.Translate(new Vector3(xVelocity, yVelocity, 0), Camera.main.transform);
 
         var pos = Camera.main.WorldToViewportPoint(transform.position);
         pos.x = Mathf.Clamp(pos.x, 0.07f, 0.93f);
@@ -72,6 +75,17 @@ public class SpaceshipController : MonoBehaviour
         Instantiate(laserPrefab, shootPointLeft.position, shootPointLeft.rotation);
         Instantiate(laserPrefab, shootPointRight.position, shootPointRight.rotation);
 
+    }
+
+    void OnTriggerEnter(Collider other){
+
+        if (other.gameObject.tag == "Terrain"){
+            ResetPosition();    
+        }
+    }
+
+    void ResetPosition(){
+        transform.position = resetPoint.position;
     }
 }
 
