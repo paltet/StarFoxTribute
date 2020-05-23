@@ -10,7 +10,8 @@ public class SceneController : MonoBehaviour
     //public GameObject endUI;
     
     public float duration;
-    void Start()
+
+    void Awake()
     {               
         StartCoroutine(WaitInit());
     }
