@@ -7,7 +7,8 @@ public class SceneController : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     //public GameObject pauseMenuUI;
-    //public GameObject endUI;
+    public GameObject endUI;
+    public GameObject aimTarget;
     
     public float duration;
 
@@ -62,10 +63,12 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
-    public static void EndScene ()
+    public  void EndScene ()
     {
-        //endUI.SetActive(true);
+        endUI.SetActive(true);
+        aimTarget.SetActive(false);
         //Time.timeScale = 0f;
-        SceneManager.LoadScene("Menu");
+        //SceneManager.LoadScene("Menu");
+
     }
 }
