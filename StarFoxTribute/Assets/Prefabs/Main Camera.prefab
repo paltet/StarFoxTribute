@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endUI: {fileID: 6289750960778051381}
   aimTarget: {fileID: 7297754206219654652}
+  healthBar: {fileID: 0}
   duration: 2
 --- !u!1001 &4382750167723628517
 PrefabInstance:
@@ -136,6 +137,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Aim
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454921362378490393, guid: 589f71e9a951572418c87e92e39c1cd2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6454921362378490395, guid: 589f71e9a951572418c87e92e39c1cd2,
         type: 3}
@@ -409,6 +415,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResetPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 4841834440237416697, guid: 48b476bc9b3b02f448e6915f8fbbdc5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48b476bc9b3b02f448e6915f8fbbdc5b, type: 3}
 --- !u!4 &1488187199 stripped
@@ -538,6 +549,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436447292136166413, guid: 1fc2a62576937b944b04ae0429290f87,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8855933636279838702, guid: 1fc2a62576937b944b04ae0429290f87,
         type: 3}
