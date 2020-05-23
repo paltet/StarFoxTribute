@@ -98,11 +98,14 @@ public class SpaceshipController : MonoBehaviour
     }
 
     void modifyHealth(float change){
-        currentHealth += change;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        HealthBarController h = HealthBar.GetComponent<HealthBarController>();
-        h.updateSlider(currentHealth/maxHealth);
+        if (!Camera.main.GetComponent<SceneController>().godMode){
+            currentHealth += change;
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+            HealthBarController h = HealthBar.GetComponent<HealthBarController>();
+            h.updateSlider(currentHealth/maxHealth);
+        }
     }
 }
 

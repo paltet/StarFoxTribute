@@ -10,7 +10,9 @@ public class SceneController : MonoBehaviour
     public GameObject endUI;
     public GameObject aimTarget;
     public GameObject healthBar;
-    
+    public GameObject godModeUI;
+
+    public bool godMode = false;    
     public float duration;
 
     void Awake()
@@ -41,7 +43,9 @@ public class SceneController : MonoBehaviour
             else {
                 Pause();
             }
-        }        
+        }
+        if (Input.GetKeyDown(KeyCode.G)) godMode = !godMode;
+        godModeUI.SetActive(godMode);
     }
 
     public void Resume ()

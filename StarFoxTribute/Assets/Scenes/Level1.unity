@@ -437,6 +437,12 @@ Transform:
   m_Father: {fileID: 2123303268}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &838266884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7296851182093324381, guid: 12a94f8d3c51c8c43a3219580af6aa98,
+    type: 3}
+  m_PrefabInstance: {fileID: 4382750169751396601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &963194228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4382750168793582989, guid: 12a94f8d3c51c8c43a3219580af6aa98,
@@ -995,6 +1001,11 @@ PrefabInstance:
       propertyPath: pauseMenuUI
       value: 
       objectReference: {fileID: 3008414233578930824}
+    - target: {fileID: 4382750169751396604, guid: 12a94f8d3c51c8c43a3219580af6aa98,
+        type: 3}
+      propertyPath: godModeUI
+      value: 
+      objectReference: {fileID: 838266884}
     - target: {fileID: 5321713444570919764, guid: 12a94f8d3c51c8c43a3219580af6aa98,
         type: 3}
       propertyPath: m_Name
