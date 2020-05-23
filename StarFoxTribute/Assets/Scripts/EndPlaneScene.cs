@@ -11,7 +11,7 @@ public class EndPlaneScene : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             // O fer el que vulguem realment
-            SceneMaster.EndScene();
+            SceneController.EndScene();
         }
     }
 }

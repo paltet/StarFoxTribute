@@ -3,22 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneMaster : MonoBehaviour
+public class SceneController : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     //public GameObject pauseMenuUI;
     //public GameObject endUI;
     
     public float duration;
-    void Start()
+
+    void Awake()
+    {               
+        StartCoroutine(WaitInit());
+    }
+
+    IEnumerator WaitInit()
     {
-        float pauseEndTime = Time.realtimeSinceStartup + duration;
         Time.timeScale = 0;
-        //countdown/loading animation
-        while(Time.realtimeSinceStartup < pauseEndTime) {
-            //countdown/loading animation
-        }
+        GameIsPaused = true;
+        // Activate countingDownCanvas
+        yield return new WaitForSecondsRealtime(duration);
+        // Deactivate countingDownCanvas
         Time.timeScale = 1;
+        GameIsPaused = false;
     }
 
     // Update is called once per frame
