@@ -9,6 +9,7 @@ public class SceneController : MonoBehaviour
     //public GameObject pauseMenuUI;
     public GameObject endUI;
     public GameObject aimTarget;
+    public GameObject healthBar;
     
     public float duration;
 
@@ -67,6 +68,7 @@ public class SceneController : MonoBehaviour
     {
         endUI.SetActive(true);
         aimTarget.SetActive(false);
+        healthBar.SetActive(false);
         //Time.timeScale = 0f;
         //SceneManager.LoadScene("Menu");
 
