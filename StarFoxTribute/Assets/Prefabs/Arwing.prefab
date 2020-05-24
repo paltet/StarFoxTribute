@@ -4892,7 +4892,7 @@ MonoBehaviour:
   pointer: {fileID: 0}
   shootPointLeft: {fileID: 1464700906}
   shootPointRight: {fileID: 1354430763}
-  laserPrefab: {fileID: 7828319054285866069, guid: e1fa34be4046c6a4881ca25fa29c2747,
+  laserPrefab: {fileID: 8290424729818587290, guid: 032e9c589fe779f459e21d8b8723157d,
     type: 3}
   resetPoint: {fileID: 0}
   maxHealth: 100

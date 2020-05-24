@@ -9,19 +9,27 @@ public class Turret1Controller : MonoBehaviour
     public GameObject laserPrefab;
     public Transform shootingPoint;
 
+    float elapsed = 0f;
+
     // Update is called once per frame
     void Update()
     {
         Vector3 prediction = GetComponent<SpaceshipPredictor>().Prediction();
+        elapsed += Time.deltaTime;
 
         if (Vector3.Distance(prediction, transform.position) <= range){
             transform.LookAt(prediction);
-            Shoot();
+            
+            if (elapsed > 1f){
+                Shoot();
+                elapsed = 0f;
+            }
+
         }
     }
 
     void Shoot(){
         Instantiate(laserPrefab, shootingPoint.position, shootingPoint.rotation);
-        Debug.Log("shoot");
+        //Debug.Log("shoot");
     }
 }

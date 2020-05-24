@@ -13,7 +13,8 @@ public class SpaceshipPredictor : MonoBehaviour
         Vector3 shipPos = ship.transform.position;
         Vector3 shooterPos = shootingPoint.position;
 
-        Vector3 shipVelocity = ship.GetComponent<Rigidbody>() ? ship.GetComponent<Rigidbody>().velocity : Vector3.zero;
+        Vector3 shipVelocity = Camera.main.velocity;
+        //Debug.Log(Camera.main.velocity);
         Vector3 shooterVelocity = Vector3.zero;
 
         float shotSpeed = laserPrefab.GetComponent<LaserController>().speed;

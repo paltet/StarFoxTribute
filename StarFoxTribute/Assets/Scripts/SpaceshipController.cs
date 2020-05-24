@@ -90,6 +90,9 @@ public class SpaceshipController : MonoBehaviour
         if (other.gameObject.tag == "Terrain"){
             ResetPosition();
             modifyHealth(-5);    
+        } else if (other.gameObject.tag == "Laser"){
+            modifyHealth(-2);
+            Destroy(other.gameObject);
         }
     }
 
