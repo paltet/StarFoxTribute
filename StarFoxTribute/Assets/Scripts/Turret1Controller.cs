@@ -32,4 +32,10 @@ public class Turret1Controller : MonoBehaviour
         Instantiate(laserPrefab, shootingPoint.position, shootingPoint.rotation);
         //Debug.Log("shoot");
     }
+
+    void OnTriggerEnter(Collider other){
+        if (other.gameObject.tag == "MyLaser"){
+            Destroy(gameObject);
+        }
+    }
 }
