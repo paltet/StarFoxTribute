@@ -15,6 +15,8 @@ public class Turret2Controller : MonoBehaviour
     float timer;
     float trigger;
 
+    bool alive = true;
+
     // Update is called once per frame
     void Update()
     {
@@ -29,8 +31,9 @@ public class Turret2Controller : MonoBehaviour
 
             if (explosionTime < timer)  GetComponent<MeshRenderer>().material.SetColor("_Color", Color.red);
 
-            if (explosionTime < 0) Explode();
+            if (explosionTime < 0 && alive) Explode();
         }
+        if (!alive) transform.localScale /= 1.05f;
     }
 
     void Trigger(){
@@ -40,6 +43,7 @@ public class Turret2Controller : MonoBehaviour
     }
 
     void Explode(){
+        alive = false;
 
         float angle = 360 / laserCount;
         for(float i = 0; i < laserCount; i++){
@@ -48,6 +52,8 @@ public class Turret2Controller : MonoBehaviour
             transform.Rotate(new Vector3(0, angle, 0), Space.Self);
 
         }
-        Destroy(gameObject);
+        ParticleSystem exp = transform.GetChild(2).GetComponent<ParticleSystem>();
+        exp.Play();
+        Destroy(gameObject, exp.duration);
     }
 }

@@ -10,6 +10,7 @@ public class Turret1Controller : MonoBehaviour
     public Transform shootingPoint;
 
     float elapsed = 0f;
+    bool alive = true;
 
     // Update is called once per frame
     void Update()
@@ -21,11 +22,13 @@ public class Turret1Controller : MonoBehaviour
             transform.LookAt(prediction);
             
             if (elapsed > 1f){
-                Shoot();
+                if (alive) Shoot();
                 elapsed = 0f;
             }
 
         }
+
+        if (!alive) Reduce();
     }
 
     void Shoot(){
@@ -35,7 +38,14 @@ public class Turret1Controller : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         if (other.gameObject.tag == "MyLaser"){
-            Destroy(gameObject);
+            alive = false;
+            ParticleSystem exp = transform.GetChild(2).GetComponent<ParticleSystem>();
+            exp.Play();
+            Destroy(gameObject, exp.duration);
         }
+    }
+
+    void Reduce(){
+        transform.localScale /= 1.05f;
     }
 }
