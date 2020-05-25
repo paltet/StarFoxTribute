@@ -95,8 +95,6 @@ public class SpaceshipController : MonoBehaviour
     void Hit(){
         ParticleSystem exp = transform.Find("FlashHit").gameObject.GetComponent<ParticleSystem>();
         exp.Play();
-        //float t = exp.duration;
-        //Destroy(exp, t);
     }
 
     void OnTriggerEnter(Collider other){
