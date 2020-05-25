@@ -641,6 +641,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4382750169751396601}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1515405451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2860789545018568214, guid: ec429c7df0be19742814d7558b4a4a7b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2860789544632417517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1829009060
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +841,11 @@ PrefabInstance:
       propertyPath: ship
       value: 
       objectReference: {fileID: 1036032160}
+    - target: {fileID: 2860789545018568208, guid: ec429c7df0be19742814d7558b4a4a7b,
+        type: 3}
+      propertyPath: shooter
+      value: 
+      objectReference: {fileID: 1515405451}
     - target: {fileID: 2860789545018568214, guid: ec429c7df0be19742814d7558b4a4a7b,
         type: 3}
       propertyPath: m_Name
