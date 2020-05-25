@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class BanditController : MonoBehaviour
 {
-    //public GameObject ship;
+    public GameObject laserPrefab;
+    public Transform shootingPoint;
+
     public float vulnerabilityTime = 3.0f;
+    public float shotTime = 3.0f;
+
     public float range = 5.0f;
     public float distance = 3.0f;
 
     float elapsed = 0f;
+    float elapsedShoot = 0f;
+    float elapsedRafaga = 0f; 
 
     bool vulnerable = false;
     bool alive = true;
@@ -37,6 +43,12 @@ public class BanditController : MonoBehaviour
         if (vulnerable && elapsed > vulnerabilityTime) Recover();
         if (!alive) transform.localScale /= 1.1f;
 
+        elapsedShoot += Time.deltaTime;
+        if (elapsedShoot > shotTime){
+            StartCoroutine(Shoot(0.2f));
+
+            elapsedShoot = 0.0f;
+        }
     }
 
     void changePosition(){
@@ -97,5 +109,13 @@ public class BanditController : MonoBehaviour
         ParticleSystem ps = transform.GetChild(0).GetComponent<ParticleSystem>();
         ps.Play();
         Destroy(transform.parent.gameObject, ps.main.duration);
+    }
+
+    IEnumerator Shoot(float delay){
+        Instantiate(laserPrefab, shootingPoint.position, shootingPoint.rotation);
+        yield return new WaitForSeconds(delay);
+        Instantiate(laserPrefab, shootingPoint.position, shootingPoint.rotation);
+        yield return new WaitForSeconds(delay);
+        Instantiate(laserPrefab, shootingPoint.position, shootingPoint.rotation);
     }
 }

@@ -1000,6 +1000,22 @@ PrefabInstance:
       propertyPath: InitialModule.startSize.scalar
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3147247137094354379, guid: b212e2ebd57cb0b47ae2158fe1bcf785,
+        type: 3}
+      propertyPath: vulnerabilityTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3147247137094354379, guid: b212e2ebd57cb0b47ae2158fe1bcf785,
+        type: 3}
+      propertyPath: laserPrefab
+      value: 
+      objectReference: {fileID: 7828319054285866069, guid: e1fa34be4046c6a4881ca25fa29c2747,
+        type: 3}
+    - target: {fileID: 3147247137094354379, guid: b212e2ebd57cb0b47ae2158fe1bcf785,
+        type: 3}
+      propertyPath: shootingPoint
+      value: 
+      objectReference: {fileID: 3706708885236147342}
     - target: {fileID: 4277554569200380553, guid: b212e2ebd57cb0b47ae2158fe1bcf785,
         type: 3}
       propertyPath: m_Name
@@ -1285,6 +1301,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 66384865207833895, guid: 7ece93e7f306de64781a42f965e56407,
     type: 3}
   m_PrefabInstance: {fileID: 2966693892514076591}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3706708885236147342 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1544497536323549446, guid: b212e2ebd57cb0b47ae2158fe1bcf785,
+    type: 3}
+  m_PrefabInstance: {fileID: 2747134492493684104}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4382750169751396601
 PrefabInstance:
