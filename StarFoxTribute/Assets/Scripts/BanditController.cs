@@ -78,6 +78,7 @@ public class BanditController : MonoBehaviour
         if (c.gameObject.tag == "MyLaser"){
             if (vulnerable){
                 Destroy();
+                Destroy(c.gameObject);
             } else {
                 changePosition();
             }
