@@ -4872,8 +4872,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.6502106, y: 0.7278557, z: 5.529653}
-  m_Center: {x: -0.032581873, y: -0.13607216, z: -0.8598433}
+  m_Size: {x: 3.6502106, y: 1.2960854, z: 5.529653}
+  m_Center: {x: -0.032581925, y: 0.14804268, z: -0.85984325}
 --- !u!114 &321654866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4898,6 +4898,8 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   HealthBar: {fileID: 0}
+  velocityPercentage: 0.2
+  accelerationSteps: 13
 --- !u!114 &321654868
 MonoBehaviour:
   m_ObjectHideFlags: 0
