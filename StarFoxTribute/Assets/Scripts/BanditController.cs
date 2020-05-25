@@ -5,20 +5,38 @@ using UnityEngine;
 public class BanditController : MonoBehaviour
 {
     //public GameObject ship;
-    public float changePositionEvery = 3.0f;
+    public float vulnerabilityTime = 3.0f;
     public float range = 5.0f;
     public float distance = 3.0f;
 
     float elapsed = 0f;
 
+    bool vulnerable = false;
+    bool alive = true;
+
+    SphereCollider detector;
+    BoxCollider body;
+
     // Update is called once per frame
+
+    void Start(){
+
+        detector = GetComponent<SphereCollider>();
+        body = GetComponent<BoxCollider>();
+
+        detector.enabled = true;
+        body.enabled = false;
+    }
+
     void Update()
     {
         Vector3 prediction = GetComponent<SpaceshipPredictor>().Prediction();
         transform.LookAt(prediction);
 
         elapsed += Time.deltaTime;
-        if (elapsed > changePositionEvery) changePosition();
+        if (vulnerable && elapsed > vulnerabilityTime) Recover();
+        if (!alive) transform.localScale /= 1.1f;
+
     }
 
     void changePosition(){
@@ -28,14 +46,11 @@ public class BanditController : MonoBehaviour
         Vector3 newPos = LoadNewPosition(transform.localPosition, range, distance);
         transform.localPosition = newPos;
 
-        /*
-        Vector3 local = transform.localPosition;
+        vulnerable = true;
+        detector.enabled = false;
+        body.enabled = true;
 
-        local.x = Mathf.Clamp(local.x, -range, +range);
-        local.y = Mathf.Clamp(local.y, -range, +range);
-
-        transform.localPosition = local;
-        */
+        transform.GetChild(3).GetComponent<ParticleSystem>().Play();
     }
 
     Vector3 LoadNewPosition(Vector3 oldPosition, float range, float distance){
@@ -58,5 +73,28 @@ public class BanditController : MonoBehaviour
         return oldPosition;
     }
 
-        
+    void OnTriggerEnter(Collider c){
+
+        if (c.gameObject.tag == "MyLaser"){
+            if (vulnerable){
+                Destroy();
+            } else {
+                changePosition();
+            }
+        }
+    }
+
+    void Recover(){
+        vulnerable = false;
+        detector.enabled = true;
+        body.enabled = false;
+        //Debug.Log("recovered");
+    }
+
+    void Destroy(){
+        alive = false;
+        ParticleSystem ps = transform.GetChild(0).GetComponent<ParticleSystem>();
+        ps.Play();
+        Destroy(transform.parent.gameObject, ps.main.duration);
+    }
 }
