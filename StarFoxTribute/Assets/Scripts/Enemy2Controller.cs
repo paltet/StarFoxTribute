@@ -95,6 +95,7 @@ public class Enemy2Controller : MonoBehaviour
             currentHealth -= 2f;
             ResetPosition();
         } else if (other.gameObject.tag == "MyLaser"){
+            Destroy(other.gameObject);
             currentHealth -= 5f;
         }
     }

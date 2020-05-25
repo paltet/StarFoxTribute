@@ -21,8 +21,12 @@ public class Asteroid2Controller : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         string tag = other.gameObject.tag;
-        if (tag == "MyLaser" || tag == "Player") {            
+        if (tag == "Player") {            
             Explode();
+        }
+        else if (tag == "MyLaser") {
+            Destroy(other.gameObject);
+            Explode();            
         }
     }
 
