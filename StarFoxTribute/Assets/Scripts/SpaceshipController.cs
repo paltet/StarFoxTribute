@@ -65,7 +65,7 @@ public class SpaceshipController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(barrelRollLeft || barrelRollRight) return;
+        
 
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
@@ -78,19 +78,25 @@ public class SpaceshipController : MonoBehaviour
         xVelocity = speed * horizontal;
         yVelocity = speed * vertical;
 
-        transform.Rotate(new Vector3(yVelocity, 0, -xVelocity));
+        if(!barrelRollLeft && !barrelRollRight) {
+            // Avoid if barrelRoll
+            transform.Rotate(new Vector3(yVelocity, 0, -xVelocity));
 
-        transform.Translate(new Vector3(xVelocity, yVelocity, 0), Camera.main.transform);
+            transform.Translate(new Vector3(xVelocity, yVelocity, 0), Camera.main.transform);
 
-        var pos = Camera.main.WorldToViewportPoint(transform.position);
-        pos.x = Mathf.Clamp(pos.x, 0.07f, 0.93f);
-        pos.y = Mathf.Clamp(pos.y, 0.07f, 0.93f);
-        transform.position = Camera.main.ViewportToWorldPoint(pos);
+            var pos = Camera.main.WorldToViewportPoint(transform.position);
+            pos.x = Mathf.Clamp(pos.x, 0.07f, 0.93f);
+            pos.y = Mathf.Clamp(pos.y, 0.07f, 0.93f);
+            transform.position = Camera.main.ViewportToWorldPoint(pos);
+        }
 
 
         Vector3 currentRotation = transform.localRotation.eulerAngles;
         this.transform.LookAt(pointer.transform);
-        currentRotation.z = clampRotation(currentRotation.z, maxRotation);
+        if(!barrelRollLeft && !barrelRollRight) {
+            // Avoid if barrelRoll
+            currentRotation.z = clampRotation(currentRotation.z, maxRotation);
+        }
         currentRotation.x = transform.localRotation.eulerAngles.x;
         currentRotation.y = transform.localRotation.eulerAngles.y;
         transform.localRotation = Quaternion.Euler (currentRotation);
