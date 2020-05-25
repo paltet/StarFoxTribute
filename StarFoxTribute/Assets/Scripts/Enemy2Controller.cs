@@ -5,7 +5,8 @@ using UnityEngine;
 public class Enemy2Controller : MonoBehaviour
 {
     public GameObject asteroid;
-    public float speed = 1.0f;
+    public float enemySpeed = 1.0f;
+    public float asteroidSpeed = 2.0f;
     public float movementLength = 5.0f;
 
     public float spawnRate = 4.0f;
@@ -15,6 +16,8 @@ public class Enemy2Controller : MonoBehaviour
     public float currentHealth;
 
     Vector3 newPosition;
+    Vector3 cartPos;
+    GameObject spawned;
 
     // Start is called before the first frame update
     void Start()
@@ -28,12 +31,15 @@ public class Enemy2Controller : MonoBehaviour
     void Update()
     {
         Movement();
-        Debug.Log(currentHealth);
+        if(spawned != null) {
+            float step =  asteroidSpeed * Time.deltaTime; // calculate distance to move
+            spawned.transform.position = Vector3.MoveTowards(spawned.transform.position, cartPos, step);
+        }
     }
 
     void Movement()
     {
-        float step =  speed * Time.deltaTime; // calculate distance to move
+        float step =  enemySpeed * Time.deltaTime; // calculate distance to move
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, newPosition, step);
 
         // Check if the position of the newPosition and Enemy are approximately equal.
@@ -46,9 +52,9 @@ public class Enemy2Controller : MonoBehaviour
 
     void Spawn()
     {
-        //Instantiate in dollycart
-        GameObject spawned = Instantiate(asteroid, transform.parent.position, Quaternion.identity);
-        Destroy(spawned,5.0f);
+        spawned = Instantiate(asteroid, transform.position, Quaternion.identity);
+        cartPos = transform.parent.position;
+        Destroy(spawned,4.0f);
     }
 
     void ResetPosition() {
