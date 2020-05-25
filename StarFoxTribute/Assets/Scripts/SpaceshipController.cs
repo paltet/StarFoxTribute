@@ -36,6 +36,12 @@ public class SpaceshipController : MonoBehaviour
 
     float originalCartSpeed;
     bool alive = true;
+    bool barrelRollLeft = false;
+    bool barrelRollRight = false;
+    public float barrelRollLength = 4.0f;
+    public float barrelRollFrames = 60f;
+    Vector3 targetBarrelRoll;
+    Quaternion targetRotationRoll;
 
     public float velocityPercentage = 0.2f; //we set speed to 1 and then velocityPercentage*originalCartSpeed
     public float accelerationSteps = 13f; //hence during 1.3 seconds
@@ -50,6 +56,7 @@ public class SpaceshipController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
             Shoot();
         }
+        BarrelRoll();
         if (!alive) transform.localScale /= 1.01f;
 
         if (currentHealth <= 0) StartCoroutine(Die());
@@ -58,6 +65,7 @@ public class SpaceshipController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(barrelRollLeft || barrelRollRight) return;
 
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
@@ -86,6 +94,33 @@ public class SpaceshipController : MonoBehaviour
         currentRotation.x = transform.localRotation.eulerAngles.x;
         currentRotation.y = transform.localRotation.eulerAngles.y;
         transform.localRotation = Quaternion.Euler (currentRotation);
+    }
+
+    void BarrelRoll(){
+        if (Input.GetKeyDown("q") && !barrelRollLeft && !barrelRollRight){
+            barrelRollLeft = true;
+            targetRotationRoll = transform.localRotation;
+            targetBarrelRoll = transform.localPosition+Vector3.left*barrelRollLength;
+        }
+        if (Input.GetKeyDown("e") && !barrelRollLeft && !barrelRollRight){
+            barrelRollRight = true;
+            targetRotationRoll = transform.localRotation;
+            targetBarrelRoll = transform.localPosition+Vector3.right*barrelRollLength;
+        }
+        if (barrelRollLeft) {
+            transform.localPosition += Vector3.left*(barrelRollLength/barrelRollFrames);
+            transform.localEulerAngles += new Vector3(0f,0f,360f/barrelRollFrames);
+            if (Vector3.Distance(transform.localPosition,targetBarrelRoll)<0.1f || Quaternion.Angle(transform.localRotation,targetRotationRoll) < 0.01f) {
+                barrelRollLeft = false;
+            }   
+        }
+        else if (barrelRollRight) {
+            transform.localPosition += Vector3.right*(barrelRollLength/barrelRollFrames);
+            transform.localEulerAngles += new Vector3(0f,0f,-360f/barrelRollFrames);
+            if (Vector3.Distance(transform.localPosition,targetBarrelRoll)<0.01f || Quaternion.Angle(transform.localRotation,targetRotationRoll) < 0.01f) {
+                barrelRollRight = false;
+            }            
+        }
     }
 
     float clampRotation(float x, float max){

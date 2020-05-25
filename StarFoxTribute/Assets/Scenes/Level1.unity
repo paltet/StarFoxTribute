@@ -613,6 +613,10 @@ PrefabInstance:
       propertyPath: levelMusic
       value: 
       objectReference: {fileID: 760112373}
+    - target: {fileID: 321654866, guid: e03556c06ced51043b4d037529257ad6, type: 3}
+      propertyPath: barrelRollLength
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 930562024103421446, guid: e03556c06ced51043b4d037529257ad6,
         type: 3}
       propertyPath: m_Name
