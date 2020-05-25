@@ -26,6 +26,11 @@ public class Enemy2Controller : MonoBehaviour
     GameObject spawned;
 
     // Start is called before the first frame update
+    void OnEnable()
+    {
+        ParticleSystem exp = transform.Find("DustExplosion").GetComponent<ParticleSystem>();
+        exp.Play();
+    }
     void Start()
     {
         InvokeRepeating("Spawn",spawnStartTime,spawnRate);
