@@ -22,6 +22,8 @@ public class SpaceshipController : MonoBehaviour
     public Transform shootPointRight;
     public GameObject laserPrefab;
     public Transform resetPoint;
+    
+    public AudioClip laserShot;
 
     public float maxHealth = 100;
     public float currentHealth;
@@ -90,10 +92,9 @@ public class SpaceshipController : MonoBehaviour
     }
 
     void Shoot(){
-
         Instantiate(laserPrefab, shootPointLeft.position, shootPointLeft.rotation);
         Instantiate(laserPrefab, shootPointRight.position, shootPointRight.rotation);
-
+        transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(laserShot,1f);
     }
 
     void Hit(){
