@@ -11,9 +11,13 @@ public class Enemy2Controller : MonoBehaviour
 
     public float spawnRate = 4.0f;
 
+    public float spawnStartTime = 0.0f;
+
     public float maxHealth = 20f;
 
     public float currentHealth;
+
+    bool alive = true;
 
     Vector3 newPosition;
     Vector3 cartPos;
@@ -22,14 +26,19 @@ public class Enemy2Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("Spawn",1.0f,spawnRate);
+        InvokeRepeating("Spawn",spawnStartTime,spawnRate);
         newPosition = Random.insideUnitCircle.normalized*movementLength;
         currentHealth = maxHealth;
+        alive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (currentHealth<=0f && alive){
+            Death();
+            alive = false;
+        }
         Movement();
         if(spawned != null) {
             float step =  asteroidSpeed * Time.deltaTime; // calculate distance to move
@@ -67,16 +76,18 @@ public class Enemy2Controller : MonoBehaviour
     }
 
     void Death(){
-        gameObject.GetComponent<Collider>().isTrigger = false;
-        CancelInvoke();
-        ParticleSystem exp = transform.GetChild(4).GetComponent<ParticleSystem>();
-        exp.Play();
-        float t = exp.duration;
-        Destroy(exp, t);
-        Destroy(gameObject, 0.7f*t);
-        exp.transform.parent = null;
-        InvokeRepeating("Reduce",0f,0.05f);
-        Invoke("CancelInvoke",0.6f*t);
+        if (transform.childCount > 0) {
+            gameObject.GetComponent<Collider>().isTrigger = false;
+            CancelInvoke("Spawn");
+            ParticleSystem exp = transform.GetChild(4).GetComponent<ParticleSystem>();
+            exp.Play();
+            float t = exp.duration;
+            Destroy(exp, t);
+            Destroy(gameObject, 0.7f*t);
+            exp.transform.parent = null;
+            InvokeRepeating("Reduce",0f,0.05f);
+            Invoke("CancelInvoke",0.6f*t);
+        }
     }
 
     void OnTriggerEnter(Collider other){
@@ -86,9 +97,5 @@ public class Enemy2Controller : MonoBehaviour
         } else if (other.gameObject.tag == "MyLaser"){
             currentHealth -= 5f;
         }
-        if (currentHealth<=0f){
-            Death();
-        }
-        Debug.Log(currentHealth);
     }
 }

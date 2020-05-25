@@ -24,10 +24,12 @@ public class Asteroid1Controller : MonoBehaviour
     }
 
     void Explode() {
-        ParticleSystem exp = transform.GetChild(0).GetComponent<ParticleSystem>();
-        exp.Play();
-        exp.transform.parent = null; //so particle system doesnt disapear but we can destroy asteroid
-        Destroy(gameObject);
-        Destroy(exp,exp.duration);
+        if (transform.childCount > 0) {
+            ParticleSystem exp = transform.GetChild(0).GetComponent<ParticleSystem>();
+            exp.Play();
+            exp.transform.parent = null; //so particle system doesnt disapear but we can destroy asteroid
+            Destroy(gameObject);
+            Destroy(exp,exp.duration);
+        }
     }
 }
