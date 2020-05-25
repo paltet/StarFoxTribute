@@ -77,10 +77,8 @@ public class Enemy2Controller : MonoBehaviour
 
     void Hit(){
         if (transform.childCount > 4) {
-            ParticleSystem exp = transform.GetChild(5).GetComponent<ParticleSystem>();
+            ParticleSystem exp = transform.Find("FlashHit").gameObject.GetComponent<ParticleSystem>();
             exp.Play();
-            //float t = exp.duration;
-            //Destroy(exp, t);
         }
     }
 
