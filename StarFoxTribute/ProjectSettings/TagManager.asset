@@ -8,6 +8,9 @@ TagManager:
   - Laser
   - MyLaser
   - Asteroid
+  - Enemy
+  - EnemyCart
+  - MyCart
   layers:
   - Default
   - TransparentFX
