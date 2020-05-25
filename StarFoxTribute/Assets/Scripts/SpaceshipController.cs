@@ -122,17 +122,18 @@ public class SpaceshipController : MonoBehaviour
     }
 
     void Brake() {
-        transform.parent.GetComponent<CinemachineDollyCart>().m_Speed = 1;
-        InvokeRepeating("Accelerate",0.0f,0.1f);
+        if (!Camera.main.GetComponent<SceneController>().godMode) {
+            transform.parent.GetComponent<CinemachineDollyCart>().m_Speed = 1;
+            InvokeRepeating("Accelerate",0.0f,0.1f);
+        }
     }
 
     void Accelerate() {
-        float cartSpeed = transform.parent.GetComponent<CinemachineDollyCart>().m_Speed;
         float accelerateRate = Mathf.Pow((1-velocityPercentage)*(originalCartSpeed-1), 1/accelerationSteps);
-        if(cartSpeed == 1) {
+        if(transform.parent.GetComponent<CinemachineDollyCart>().m_Speed == 1) {
             transform.parent.GetComponent<CinemachineDollyCart>().m_Speed += velocityPercentage*(originalCartSpeed-1);
-            cartSpeed = transform.parent.GetComponent<CinemachineDollyCart>().m_Speed;
         }
+        float cartSpeed = transform.parent.GetComponent<CinemachineDollyCart>().m_Speed;
         float newSpeed = (cartSpeed - velocityPercentage*originalCartSpeed)*accelerateRate + velocityPercentage*originalCartSpeed;
         if(newSpeed<=originalCartSpeed) {
             transform.parent.GetComponent<CinemachineDollyCart>().m_Speed=newSpeed;
