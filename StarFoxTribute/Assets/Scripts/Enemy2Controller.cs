@@ -75,6 +75,15 @@ public class Enemy2Controller : MonoBehaviour
         transform.localScale /= 1.05f;
     }
 
+    void Hit(){
+        if (transform.childCount > 4) {
+            ParticleSystem exp = transform.GetChild(5).GetComponent<ParticleSystem>();
+            exp.Play();
+            //float t = exp.duration;
+            //Destroy(exp, t);
+        }
+    }
+
     void Death(){
         if (transform.childCount > 0) {
             gameObject.GetComponent<Collider>().isTrigger = false;
@@ -97,6 +106,9 @@ public class Enemy2Controller : MonoBehaviour
         } else if (other.gameObject.tag == "MyLaser"){
             Destroy(other.gameObject);
             currentHealth -= 5f;
+            if(currentHealth > 0f) {
+                Hit();
+            }
         }
     }
 }

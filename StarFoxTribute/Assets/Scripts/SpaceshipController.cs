@@ -92,16 +92,26 @@ public class SpaceshipController : MonoBehaviour
 
     }
 
+    void Hit(){
+        ParticleSystem exp = transform.Find("FlashHit").gameObject.GetComponent<ParticleSystem>();
+        exp.Play();
+        //float t = exp.duration;
+        //Destroy(exp, t);
+    }
+
     void OnTriggerEnter(Collider other){
         if (other.gameObject.tag == "Terrain"){
             modifyHealth(-5);
+            Hit();
             ResetPosition();
             Brake();  
         } else if (other.gameObject.tag == "Laser"){
             modifyHealth(-2);
+            Hit();
             Destroy(other.gameObject);
         } else if (other.gameObject.tag == "Asteroid"){
             modifyHealth(-5);
+            Hit();
             Brake();
         }
     }
