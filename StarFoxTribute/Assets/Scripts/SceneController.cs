@@ -11,6 +11,7 @@ public class SceneController : MonoBehaviour
     public GameObject aimTarget;
     public GameObject healthBar;
     public GameObject godModeUI;
+    public GameObject dieUI;
 
     public bool godMode = false;    
     public float duration;
@@ -76,5 +77,16 @@ public class SceneController : MonoBehaviour
         //Time.timeScale = 0f;
         //SceneManager.LoadScene("Menu");
 
+    }
+
+    public void DieScene(){
+
+        dieUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+    }
+
+    public void Restart(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

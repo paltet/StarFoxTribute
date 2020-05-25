@@ -29,6 +29,7 @@ public class SpaceshipController : MonoBehaviour
     public GameObject HealthBar;
 
     float originalCartSpeed;
+    bool alive = true;
 
     public float velocityPercentage = 0.2f; //we set speed to 1 and then velocityPercentage*originalCartSpeed
     public float accelerationSteps = 13f; //hence during 1.3 seconds
@@ -43,6 +44,9 @@ public class SpaceshipController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
             Shoot();
         }
+        if (!alive) transform.localScale /= 1.01f;
+
+        if (currentHealth <= 0) StartCoroutine(Die());
     }
     
     // Update is called once per frame
@@ -151,5 +155,13 @@ public class SpaceshipController : MonoBehaviour
             CancelInvoke("Accelerate");
         }        
     }
-}
+    
 
+    IEnumerator Die(){
+        ParticleSystem ps = transform.Find("Explosion").GetComponent<ParticleSystem>();
+        ps.Play();
+        yield return new WaitForSeconds(ps.main.duration);
+        Camera.main.GetComponent<SceneController>().DieScene();
+        //Destroy(gameObject);
+    }
+}
