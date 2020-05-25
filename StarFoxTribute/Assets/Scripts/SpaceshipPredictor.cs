@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpaceshipPredictor : MonoBehaviour
 {
     public Transform shootingPoint;
+    public GameObject shooter;
     public GameObject ship;
     public GameObject laserPrefab;
 
@@ -15,7 +16,7 @@ public class SpaceshipPredictor : MonoBehaviour
 
         Vector3 shipVelocity = Camera.main.velocity;
         //Debug.Log(Camera.main.velocity);
-        Vector3 shooterVelocity = Vector3.zero;
+        Vector3 shooterVelocity = transform.GetComponent<Rigidbody>() ? shooter.GetComponent<Rigidbody>().velocity : Vector3.zero;
 
         float shotSpeed = laserPrefab.GetComponent<LaserController>().speed;
 
