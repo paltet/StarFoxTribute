@@ -89,7 +89,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4229263658992129045}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1470866738
 AudioSource:
@@ -5023,6 +5023,7 @@ MonoBehaviour:
     type: 3}
   resetPoint: {fileID: 0}
   laserShot: {fileID: 8300000, guid: 70fc82777f2613043aa60b992aef6d67, type: 3}
+  gameOver: {fileID: 8300000, guid: e8acd9c810bdc1b49a15dea05206c602, type: 3}
   maxHealth: 100
   currentHealth: 0
   HealthBar: {fileID: 0}

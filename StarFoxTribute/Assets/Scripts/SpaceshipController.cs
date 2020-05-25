@@ -24,11 +24,14 @@ public class SpaceshipController : MonoBehaviour
     public Transform resetPoint;
     
     public AudioClip laserShot;
+    public AudioClip gameOver;
 
     public float maxHealth = 100;
     public float currentHealth;
 
     public GameObject HealthBar;
+    
+    public GameObject levelMusic;
 
     float originalCartSpeed;
     bool alive = true;
@@ -159,6 +162,8 @@ public class SpaceshipController : MonoBehaviour
     
 
     IEnumerator Die(){
+        transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(gameOver,1f);
+        levelMusic.GetComponent<AudioSource>().Stop();
         ParticleSystem ps = transform.Find("Explosion").GetComponent<ParticleSystem>();
         ps.Play();
         yield return new WaitForSeconds(ps.main.duration);

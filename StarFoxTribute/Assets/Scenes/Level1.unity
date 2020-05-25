@@ -468,7 +468,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -557,8 +557,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760112373}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 273.41632, y: 166.23782, z: 133.88882}
+  m_LocalRotation: {x: -0, y: -0.43918914, z: -0, w: 0.8983946}
+  m_LocalPosition: {x: 261.20505, y: 56.695984, z: 17.057564}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -609,6 +609,10 @@ PrefabInstance:
       propertyPath: velocityPercentage
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 321654866, guid: e03556c06ced51043b4d037529257ad6, type: 3}
+      propertyPath: levelMusic
+      value: 
+      objectReference: {fileID: 760112373}
     - target: {fileID: 930562024103421446, guid: e03556c06ced51043b4d037529257ad6,
         type: 3}
       propertyPath: m_Name
