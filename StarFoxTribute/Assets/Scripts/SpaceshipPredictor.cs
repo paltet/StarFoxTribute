@@ -5,9 +5,10 @@ using UnityEngine;
 public class SpaceshipPredictor : MonoBehaviour
 {
     public Transform shootingPoint;
-    public GameObject shooter;
     public GameObject ship;
     public GameObject laserPrefab;
+
+    public bool fixedInCamera = false;
 
     public Vector3 Prediction(){
 
@@ -16,9 +17,11 @@ public class SpaceshipPredictor : MonoBehaviour
 
         Vector3 shipVelocity = Camera.main.velocity;
         //Debug.Log(Camera.main.velocity);
-        Vector3 shooterVelocity = transform.GetComponent<Rigidbody>() ? shooter.GetComponent<Rigidbody>().velocity : Vector3.zero;
+        Vector3 shooterVelocity = transform.GetComponent<Rigidbody>() ? transform.GetComponent<Rigidbody>().velocity : Vector3.zero;
 
         float shotSpeed = laserPrefab.GetComponent<LaserController>().speed;
+
+        if (fixedInCamera) shooterVelocity = Camera.main.velocity;
 
         return computeInterception(shipPos, shooterPos, shipVelocity, shooterVelocity, shotSpeed);
     }
