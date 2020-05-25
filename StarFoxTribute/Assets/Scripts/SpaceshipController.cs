@@ -93,17 +93,16 @@ public class SpaceshipController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-
         if (other.gameObject.tag == "Terrain"){
+            modifyHealth(-5);
             ResetPosition();
-            modifyHealth(-5);    
+            Brake();  
         } else if (other.gameObject.tag == "Laser"){
             modifyHealth(-2);
             Destroy(other.gameObject);
         } else if (other.gameObject.tag == "Asteroid"){
             modifyHealth(-5);
-            transform.parent.GetComponent<CinemachineDollyCart>().m_Speed = 1;
-            InvokeRepeating("Accelerate",0.0f,0.1f);
+            Brake();
         }
     }
 
@@ -120,6 +119,11 @@ public class SpaceshipController : MonoBehaviour
             HealthBarController h = HealthBar.GetComponent<HealthBarController>();
             h.updateSlider(currentHealth/maxHealth);
         }
+    }
+
+    void Brake() {
+        transform.parent.GetComponent<CinemachineDollyCart>().m_Speed = 1;
+        InvokeRepeating("Accelerate",0.0f,0.1f);
     }
 
     void Accelerate() {
