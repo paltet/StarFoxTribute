@@ -7,6 +7,7 @@ TagManager:
   - Terrain
   - Laser
   - MyLaser
+  - Asteroid
   layers:
   - Default
   - TransparentFX

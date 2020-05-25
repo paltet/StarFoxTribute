@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SpaceshipController : MonoBehaviour
     {
@@ -27,9 +28,15 @@ public class SpaceshipController : MonoBehaviour
 
     public GameObject HealthBar;
 
+    float originalCartSpeed;
+
+    public float velocityPercentage = 0.2f; //we set speed to 1 and then velocityPercentage*originalCartSpeed
+    public float accelerationSteps = 13f; //hence during 1.3 seconds
+
 
     void Start(){
         currentHealth = maxHealth;
+        originalCartSpeed = transform.parent.GetComponent<CinemachineDollyCart>().m_Speed;
     }
 
     void Update(){
@@ -93,6 +100,10 @@ public class SpaceshipController : MonoBehaviour
         } else if (other.gameObject.tag == "Laser"){
             modifyHealth(-2);
             Destroy(other.gameObject);
+        } else if (other.gameObject.tag == "Asteroid"){
+            modifyHealth(-5);
+            transform.parent.GetComponent<CinemachineDollyCart>().m_Speed = 1;
+            InvokeRepeating("Accelerate",0.0f,0.1f);
         }
     }
 
@@ -109,6 +120,23 @@ public class SpaceshipController : MonoBehaviour
             HealthBarController h = HealthBar.GetComponent<HealthBarController>();
             h.updateSlider(currentHealth/maxHealth);
         }
+    }
+
+    void Accelerate() {
+        float cartSpeed = transform.parent.GetComponent<CinemachineDollyCart>().m_Speed;
+        float accelerateRate = Mathf.Pow((1-velocityPercentage)*(originalCartSpeed-1), 1/accelerationSteps);
+        if(cartSpeed == 1) {
+            transform.parent.GetComponent<CinemachineDollyCart>().m_Speed += velocityPercentage*(originalCartSpeed-1);
+            cartSpeed = transform.parent.GetComponent<CinemachineDollyCart>().m_Speed;
+        }
+        float newSpeed = (cartSpeed - velocityPercentage*originalCartSpeed)*accelerateRate + velocityPercentage*originalCartSpeed;
+        if(newSpeed<=originalCartSpeed) {
+            transform.parent.GetComponent<CinemachineDollyCart>().m_Speed=newSpeed;
+        }
+        else {
+            transform.parent.GetComponent<CinemachineDollyCart>().m_Speed=originalCartSpeed;
+            CancelInvoke("Accelerate");
+        }        
     }
 }
 
