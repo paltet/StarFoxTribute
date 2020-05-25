@@ -366,6 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 323753838539802653, guid: 1a1f82bfdea0f0d42b84de6d7eaeaa3a, type: 3}
+  turret: {fileID: 3979948482354528708, guid: 8d45e24ae075ea44fab5597889793cff, type: 3}
   enemySpeed: 1
   asteroidSpeed: 4
   movementLength: 5

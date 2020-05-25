@@ -38,7 +38,7 @@ public class Turret2Controller : MonoBehaviour
 
     void Trigger(){
         this.transform.GetChild(0).transform.Translate(new Vector3(0, -0.5f, 0), Space.Self);
-        this.transform.GetChild(1). transform.Translate(new Vector3(0, 0.5f, 0), Space.Self);
+        this.transform.GetChild(1).transform.Translate(new Vector3(0, 0.5f, 0), Space.Self);
         triggered = true;
     }
 

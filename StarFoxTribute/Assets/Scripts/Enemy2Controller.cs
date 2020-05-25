@@ -5,6 +5,8 @@ using UnityEngine;
 public class Enemy2Controller : MonoBehaviour
 {
     public GameObject asteroid;
+    public GameObject turret;
+    public float turretProbability = 0.1f;
     public float enemySpeed = 1.0f;
     public float asteroidSpeed = 2.0f;
     public float movementLength = 5.0f;
@@ -61,9 +63,17 @@ public class Enemy2Controller : MonoBehaviour
 
     void Spawn()
     {
-        spawned = Instantiate(asteroid, transform.position, Quaternion.identity);
-        cartPos = transform.parent.position;
-        Destroy(spawned,4.0f);
+        float prob = Random.Range(0f,1f);
+        if (prob <= (1f-turretProbability)) {
+            spawned = Instantiate(asteroid, transform.position, Quaternion.identity);
+            cartPos = transform.parent.position;
+            Destroy(spawned,4.0f);
+        }
+        else {
+            spawned = Instantiate(turret, transform.position, Quaternion.identity);
+            spawned.transform.GetComponent<Turret2Controller>().ship = transform.parent.gameObject;
+            cartPos = transform.parent.position;
+        }
     }
 
     void ResetPosition() {

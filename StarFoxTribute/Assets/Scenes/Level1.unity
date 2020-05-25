@@ -788,6 +788,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3466552101014723865, guid: 6b2bd91afbc945544ba7c26f017f5ffe,
+        type: 3}
+      propertyPath: turret
+      value: 
+      objectReference: {fileID: 3979948482354528708, guid: 8d45e24ae075ea44fab5597889793cff,
+        type: 3}
+    - target: {fileID: 3466552101014723865, guid: 6b2bd91afbc945544ba7c26f017f5ffe,
+        type: 3}
+      propertyPath: turretProbability
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8458074603843464966, guid: 6b2bd91afbc945544ba7c26f017f5ffe,
         type: 3}
       propertyPath: m_LocalPosition.y

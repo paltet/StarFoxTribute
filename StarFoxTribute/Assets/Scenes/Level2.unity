@@ -1053,5 +1053,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyDollyCart
       objectReference: {fileID: 0}
+    - target: {fileID: 3466552101014723865, guid: 6b2bd91afbc945544ba7c26f017f5ffe,
+        type: 3}
+      propertyPath: turret
+      value: 
+      objectReference: {fileID: 3979948482354528708, guid: 8d45e24ae075ea44fab5597889793cff,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b2bd91afbc945544ba7c26f017f5ffe, type: 3}
