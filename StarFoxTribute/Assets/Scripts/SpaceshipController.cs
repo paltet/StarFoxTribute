@@ -25,6 +25,7 @@ public class SpaceshipController : MonoBehaviour
     
     public AudioClip laserShot;
     public AudioClip gameOver;
+    public AudioClip hurt;
 
     public float maxHealth = 100;
     public float currentHealth;
@@ -101,6 +102,7 @@ public class SpaceshipController : MonoBehaviour
     }
 
     void Hit(){
+        transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(hurt,1f);
         ParticleSystem exp = transform.Find("FlashHit").gameObject.GetComponent<ParticleSystem>();
         exp.Play();
     }

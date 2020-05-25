@@ -5024,9 +5024,11 @@ MonoBehaviour:
   resetPoint: {fileID: 0}
   laserShot: {fileID: 8300000, guid: 70fc82777f2613043aa60b992aef6d67, type: 3}
   gameOver: {fileID: 8300000, guid: e8acd9c810bdc1b49a15dea05206c602, type: 3}
+  hurt: {fileID: 8300000, guid: 1b19d458a6bd84743913be3ff6bd56ca, type: 3}
   maxHealth: 100
   currentHealth: 0
   HealthBar: {fileID: 0}
+  levelMusic: {fileID: 0}
   velocityPercentage: 0.2
   accelerationSteps: 13
 --- !u!114 &321654868
