@@ -24,7 +24,6 @@ public class BanditController : MonoBehaviour
     BoxCollider body;
 
     // Update is called once per frame
-
     void Start(){
 
         detector = GetComponent<SphereCollider>();
@@ -117,5 +116,9 @@ public class BanditController : MonoBehaviour
         Instantiate(laserPrefab, shootingPoint.position, shootingPoint.rotation);
         yield return new WaitForSeconds(delay);
         Instantiate(laserPrefab, shootingPoint.position, shootingPoint.rotation);
+    }
+
+    void OnEnable(){
+        transform.GetChild(3).GetComponent<ParticleSystem>().Play();
     }
 }

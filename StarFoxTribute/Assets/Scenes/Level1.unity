@@ -904,6 +904,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 4382750169751396602}
+--- !u!1 &2108570228736046849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8935642288365683635, guid: b212e2ebd57cb0b47ae2158fe1bcf785,
+    type: 3}
+  m_PrefabInstance: {fileID: 7008412610063791282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2108570228736046850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108570228736046849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0c464577358664ca564ca4e9fc8205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  awakePos: 50
 --- !u!1001 &2464661441400362465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1570,6 +1589,11 @@ PrefabInstance:
       propertyPath: ship
       value: 
       objectReference: {fileID: 1036032160}
+    - target: {fileID: 6891115227203173742, guid: b212e2ebd57cb0b47ae2158fe1bcf785,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8935642288365683635, guid: b212e2ebd57cb0b47ae2158fe1bcf785,
         type: 3}
       propertyPath: m_Name
