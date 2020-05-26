@@ -76,7 +76,10 @@ public class Enemy2Controller : MonoBehaviour
         }
         else {
             spawned = Instantiate(turret, transform.position, Quaternion.identity);
-            spawned.transform.GetComponent<Turret2Controller>().ship = transform.parent.gameObject;
+            //Potser ajustar aquests parametres
+            spawned.transform.GetComponent<Turret2Controller>().range /= 2.5f;
+            spawned.transform.GetComponent<Turret2Controller>().explosionTime /= 2.5f;
+            spawned.transform.GetComponent<Turret2Controller>().ship = transform.parent.GetComponent<MaintainDistance>().playerCart;
             cartPos = transform.parent.position;
         }
     }
