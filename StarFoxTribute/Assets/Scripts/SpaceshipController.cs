@@ -68,6 +68,7 @@ public class SpaceshipController : MonoBehaviour
         if (currentHealth <= 0) {
             if(alive) {
                 alive = false;
+                transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().pitch = 1;
                 transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(gameOverVoice);
                 transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(gameOver);
             }
@@ -158,10 +159,12 @@ public class SpaceshipController : MonoBehaviour
     void Shoot(){        
         Instantiate(laserPrefab, shootPointLeft.position, shootPointLeft.rotation);
         Instantiate(laserPrefab, shootPointRight.position, shootPointRight.rotation);
+        transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().pitch = Random.Range(0.8f,1.2f);
         transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(laserShot,1f);
     }
 
     void Hit(){
+        transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().pitch = 1;
         transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(hurt,1f);
         ParticleSystem exp = transform.Find("FlashHit").gameObject.GetComponent<ParticleSystem>();
         exp.Play();
