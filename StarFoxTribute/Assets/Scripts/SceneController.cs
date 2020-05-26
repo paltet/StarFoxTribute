@@ -13,6 +13,8 @@ public class SceneController : MonoBehaviour
     public GameObject godModeUI;
     public GameObject dieUI;
 
+    public AudioSource levelMusic;
+
     public bool godMode = false;    
     public float duration;
 
@@ -51,6 +53,7 @@ public class SceneController : MonoBehaviour
 
     public void Resume ()
     {
+        levelMusic.UnPause();
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -58,6 +61,7 @@ public class SceneController : MonoBehaviour
 
     void Pause ()
     {
+        levelMusic.Pause();
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;

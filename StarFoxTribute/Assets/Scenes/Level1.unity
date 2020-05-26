@@ -1259,6 +1259,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2264289115623167598, guid: 12a94f8d3c51c8c43a3219580af6aa98,
+        type: 3}
+      propertyPath: levelMusic
+      value: 
+      objectReference: {fileID: 760112374}
     - target: {fileID: 2264289115623167599, guid: 12a94f8d3c51c8c43a3219580af6aa98,
         type: 3}
       propertyPath: m_Name

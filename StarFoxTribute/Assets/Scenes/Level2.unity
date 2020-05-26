@@ -501,6 +501,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1465815867}
     m_Modifications:
+    - target: {fileID: 2264289115623167598, guid: 12a94f8d3c51c8c43a3219580af6aa98,
+        type: 3}
+      propertyPath: levelMusic
+      value: 
+      objectReference: {fileID: 197560804}
     - target: {fileID: 2572753911971576631, guid: 12a94f8d3c51c8c43a3219580af6aa98,
         type: 3}
       propertyPath: m_AnchorMax.x
