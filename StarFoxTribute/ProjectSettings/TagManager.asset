@@ -14,6 +14,7 @@ TagManager:
   - Music
   - SFX
   - Turret
+  - Spawner
   layers:
   - Default
   - TransparentFX
