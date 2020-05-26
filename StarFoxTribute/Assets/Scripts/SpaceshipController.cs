@@ -162,7 +162,6 @@ public class SpaceshipController : MonoBehaviour
     }
 
     void Hit(){
-        Camera.main.GetComponent<CameraShake>().ShakeCamera(1f,0.2f);
         transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(hurt,1f);
         ParticleSystem exp = transform.Find("FlashHit").gameObject.GetComponent<ParticleSystem>();
         exp.Play();
@@ -179,6 +178,7 @@ public class SpaceshipController : MonoBehaviour
             modifyHealth(-2);
             Hit();
             Destroy(other.gameObject);
+            Camera.main.GetComponent<CameraShake>().ShakeCamera(0.2f,0.1f);
         } else if (other.gameObject.tag == "Asteroid" || other.gameObject.tag == "Turret"){
             transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(shootRocks);
             modifyHealth(-5);
@@ -206,6 +206,7 @@ public class SpaceshipController : MonoBehaviour
     }
 
     void Brake() {
+        Camera.main.GetComponent<CameraShake>().ShakeCamera(0.8f,0.2f);
         if (!Camera.main.GetComponent<SceneController>().godMode) {
             transform.parent.GetComponent<CinemachineDollyCart>().m_Speed = 1;
             InvokeRepeating("Accelerate",0.0f,0.1f);
