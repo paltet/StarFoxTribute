@@ -887,6 +887,8 @@ MonoBehaviour:
   healthBar: {fileID: 2575767593102041293}
   godModeUI: {fileID: 2575767594718381713}
   dieUI: {fileID: 1801266422924167451}
+  levelMusic: {fileID: 0}
+  endMusic: {fileID: 8300000, guid: bc22b63dd6bbe554cb7a83efb6791865, type: 3}
   godMode: 0
   duration: 2
 --- !u!1 &2575767592838156274

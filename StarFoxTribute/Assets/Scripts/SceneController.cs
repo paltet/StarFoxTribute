@@ -14,6 +14,7 @@ public class SceneController : MonoBehaviour
     public GameObject dieUI;
 
     public AudioSource levelMusic;
+    public AudioClip endMusic;
 
     public bool godMode = false;    
     public float duration;
@@ -73,11 +74,13 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
-    public  void EndScene ()
+    public void EndScene ()
     {
         endUI.SetActive(true);
         aimTarget.SetActive(false);
         healthBar.SetActive(false);
+        levelMusic.Stop();
+        levelMusic.PlayOneShot(endMusic);
         //Time.timeScale = 0f;
         //SceneManager.LoadScene("Menu");
 
