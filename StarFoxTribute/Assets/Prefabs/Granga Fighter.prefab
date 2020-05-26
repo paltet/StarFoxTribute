@@ -368,6 +368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 323753838539802653, guid: 1a1f82bfdea0f0d42b84de6d7eaeaa3a, type: 3}
+  asteroid2: {fileID: 3590376346958297865, guid: c87aa81f023dd6446846d20c7e546d24,
+    type: 3}
   turret: {fileID: 3979948482354528708, guid: 8d45e24ae075ea44fab5597889793cff, type: 3}
   turretProbability: 0.1
   enemySpeed: 1
