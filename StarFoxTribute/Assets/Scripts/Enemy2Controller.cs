@@ -18,6 +18,7 @@ public class Enemy2Controller : MonoBehaviour
     public float maxHealth = 20f;
 
     public float currentHealth;
+    public AudioClip gothit;
 
     bool alive = true;
 
@@ -94,6 +95,7 @@ public class Enemy2Controller : MonoBehaviour
     }
 
     void Hit(){
+        transform.gameObject.GetComponent<AudioSource>().PlayOneShot(gothit);
         if (transform.childCount > 4) {
             ParticleSystem exp = transform.Find("FlashHit").gameObject.GetComponent<ParticleSystem>();
             exp.Play();

@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 584346337}
   m_Layer: 0
   m_Name: SFX
-  m_TagString: Untagged
+  m_TagString: SFX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1202,5 +1202,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3979948482354528708, guid: 8d45e24ae075ea44fab5597889793cff,
         type: 3}
+    - target: {fileID: 3466552101014723865, guid: 6b2bd91afbc945544ba7c26f017f5ffe,
+        type: 3}
+      propertyPath: SFX
+      value: 
+      objectReference: {fileID: 584346337}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b2bd91afbc945544ba7c26f017f5ffe, type: 3}

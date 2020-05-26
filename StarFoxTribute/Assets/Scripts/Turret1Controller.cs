@@ -9,6 +9,8 @@ public class Turret1Controller : MonoBehaviour
     public GameObject laserPrefab;
     public Transform shootingPoint;
 
+    public AudioClip gothit;
+
     float elapsed = 0f;
     bool alive = true;
 
@@ -38,6 +40,7 @@ public class Turret1Controller : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         if (other.gameObject.tag == "MyLaser"){
+            transform.gameObject.GetComponent<AudioSource>().PlayOneShot(gothit);
             alive = false;
             ParticleSystem exp = transform.GetChild(2).GetComponent<ParticleSystem>();
             exp.Play();

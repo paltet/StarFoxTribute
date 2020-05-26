@@ -12,6 +12,7 @@ TagManager:
   - EnemyCart
   - MyCart
   - Music
+  - SFX
   layers:
   - Default
   - TransparentFX
