@@ -17,5 +17,8 @@ public class EndPlaneScene : MonoBehaviour
             // O fer el que vulguem realment
             sc.EndScene();
         }
+        else if(other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Asteroid")) {
+            Destroy(other.gameObject);
+        }
     }
 }

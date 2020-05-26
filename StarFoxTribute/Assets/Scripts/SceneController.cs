@@ -21,7 +21,8 @@ public class SceneController : MonoBehaviour
     public AudioClip unpauseSound;
     public AudioClip countdown;
 
-    public bool godMode = false;    
+    public bool godMode = false;
+    public bool endScene = false;  
     //public float duration;
 
     void Awake()
@@ -93,6 +94,7 @@ public class SceneController : MonoBehaviour
 
     public void EndScene ()
     {
+        endScene = true;
         endUI.SetActive(true);
         aimTarget.SetActive(false);
         healthBar.SetActive(false);

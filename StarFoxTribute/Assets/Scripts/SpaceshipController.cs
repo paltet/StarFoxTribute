@@ -58,7 +58,8 @@ public class SpaceshipController : MonoBehaviour
 
     void Update(){
         if (Input.GetMouseButtonDown(0)){
-            Shoot();
+            if(!Camera.main.GetComponent<SceneController>().endScene)
+                Shoot();
         }
         BarrelRoll();
         if (!alive) transform.localScale /= 1.01f;
@@ -153,7 +154,7 @@ public class SpaceshipController : MonoBehaviour
         else return max;
     }
 
-    void Shoot(){
+    void Shoot(){        
         Instantiate(laserPrefab, shootPointLeft.position, shootPointLeft.rotation);
         Instantiate(laserPrefab, shootPointRight.position, shootPointRight.rotation);
         transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(laserShot,1f);
