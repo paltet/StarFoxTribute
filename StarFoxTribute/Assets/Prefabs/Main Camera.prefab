@@ -888,7 +888,11 @@ MonoBehaviour:
   godModeUI: {fileID: 2575767594718381713}
   dieUI: {fileID: 1801266422924167451}
   levelMusic: {fileID: 0}
+  SFX: {fileID: 0}
   endMusic: {fileID: 8300000, guid: bc22b63dd6bbe554cb7a83efb6791865, type: 3}
+  pauseSound: {fileID: 8300000, guid: 186efa0020f0a2041a90c33cfac1107b, type: 3}
+  unpauseSound: {fileID: 8300000, guid: 85480b9579e9151459503badcc58ff39, type: 3}
+  countdown: {fileID: 8300000, guid: e2943bc6753626a4d9a66344715d6b3d, type: 3}
   godMode: 0
   duration: 2
 --- !u!1 &2575767592838156274

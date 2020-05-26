@@ -14,13 +14,18 @@ public class SceneController : MonoBehaviour
     public GameObject dieUI;
 
     public AudioSource levelMusic;
+    public AudioSource SFX;
     public AudioClip endMusic;
+    public AudioClip pauseSound;
+    public AudioClip unpauseSound;
+    public AudioClip countdown;
 
     public bool godMode = false;    
-    public float duration;
+    //public float duration;
 
     void Awake()
-    {               
+    {
+        SFX.PlayOneShot(countdown);
         StartCoroutine(WaitInit());
     }
 
@@ -29,10 +34,11 @@ public class SceneController : MonoBehaviour
         Time.timeScale = 0;
         GameIsPaused = true;
         // Activate countingDownCanvas
-        yield return new WaitForSecondsRealtime(duration);
+        yield return new WaitForSecondsRealtime(3.1f); //time of clip
         // Deactivate countingDownCanvas
         Time.timeScale = 1;
         GameIsPaused = false;
+        levelMusic.Play();
     }
 
     // Update is called once per frame
@@ -54,6 +60,7 @@ public class SceneController : MonoBehaviour
 
     public void Resume ()
     {
+        SFX.PlayOneShot(unpauseSound);
         levelMusic.UnPause();
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
@@ -63,6 +70,7 @@ public class SceneController : MonoBehaviour
     void Pause ()
     {
         levelMusic.Pause();
+        SFX.PlayOneShot(pauseSound);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
