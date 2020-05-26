@@ -11,7 +11,7 @@ public class Turret2Controller : MonoBehaviour
     public GameObject ship;
     public GameObject laserPrefab;
     public AudioClip exploding;
-    //public AudioClip loading;
+    public AudioClip gothit;
 
     bool triggered = false;
     float timer;
@@ -59,5 +59,15 @@ public class Turret2Controller : MonoBehaviour
         ParticleSystem exp = transform.GetChild(2).GetComponent<ParticleSystem>();
         exp.Play();
         Destroy(gameObject, Mathf.Max(exp.duration,exploding.length));
+    }
+
+    void OnTriggerEnter(Collider other){
+        if (other.gameObject.tag == "MyLaser"){
+            transform.gameObject.GetComponent<AudioSource>().PlayOneShot(gothit);
+            alive = false;
+            ParticleSystem exp = transform.GetChild(2).GetComponent<ParticleSystem>();
+            exp.Play();
+            Destroy(gameObject, exp.duration);
+        }
     }
 }

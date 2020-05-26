@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 3388756419901322520}
   - component: {fileID: 3402865779080321673}
   - component: {fileID: 2485561871495964351}
+  - component: {fileID: 3446751924912904192}
   m_Layer: 0
   m_Name: Turret2
   m_TagString: Turret
@@ -177,11 +178,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 50
   explosionTime: 2
-  laserCount: 36
+  laserCount: 72
   ship: {fileID: 0}
   laserPrefab: {fileID: 7828319054285866069, guid: e1fa34be4046c6a4881ca25fa29c2747,
     type: 3}
   exploding: {fileID: 8300000, guid: 1ecd04c15717e314282bf193a68f6857, type: 3}
+  gothit: {fileID: 8300000, guid: f003f245047d11d4987702d0f9f65cdd, type: 3}
 --- !u!82 &2485561871495964351
 AudioSource:
   m_ObjectHideFlags: 0
@@ -278,6 +280,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!135 &3446751924912904192
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3979948482354528708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.76792634
+  m_Center: {x: -0.000000014901161, y: 0.00000008940697, z: 0.000000014901161}
 --- !u!1 &8586847667895385131
 GameObject:
   m_ObjectHideFlags: 0
