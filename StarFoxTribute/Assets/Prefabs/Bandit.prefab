@@ -4958,7 +4958,7 @@ MonoBehaviour:
   laserPrefab: {fileID: 7828319054285866069, guid: e1fa34be4046c6a4881ca25fa29c2747,
     type: 3}
   shootingPoint: {fileID: 3228890499862990737}
-  vulnerabilityTime: 1
+  vulnerabilityTime: 2
   shotTime: 2
   range: 8
   distance: 3
