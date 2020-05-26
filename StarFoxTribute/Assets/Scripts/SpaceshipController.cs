@@ -40,6 +40,7 @@ public class SpaceshipController : MonoBehaviour
     bool barrelRollRight = false;
     public float barrelRollLength = 4.0f;
     public float barrelRollFrames = 60f;
+    float counter;
     Vector3 targetBarrelRoll;
     Quaternion targetRotationRoll;
 
@@ -48,6 +49,7 @@ public class SpaceshipController : MonoBehaviour
 
 
     void Start(){
+        counter = 0;
         currentHealth = maxHealth;
         originalCartSpeed = transform.parent.GetComponent<CinemachineDollyCart>().m_Speed;
     }
@@ -107,24 +109,30 @@ public class SpaceshipController : MonoBehaviour
             barrelRollLeft = true;
             targetRotationRoll = transform.localRotation;
             targetBarrelRoll = transform.localPosition+Vector3.left*barrelRollLength;
+            counter = 0;
         }
         if (Input.GetKeyDown("e") && !barrelRollLeft && !barrelRollRight){
             barrelRollRight = true;
             targetRotationRoll = transform.localRotation;
             targetBarrelRoll = transform.localPosition+Vector3.right*barrelRollLength;
+            counter = 0;
         }
         if (barrelRollLeft) {
+            counter++;
             transform.localPosition += Vector3.left*(barrelRollLength/barrelRollFrames);
             transform.localEulerAngles += new Vector3(0f,0f,360f/barrelRollFrames);
-            if (Vector3.Distance(transform.localPosition,targetBarrelRoll)<0.1f || Quaternion.Angle(transform.localRotation,targetRotationRoll) < 0.01f) {
+            if (counter>=barrelRollFrames || Vector3.Distance(transform.localPosition,targetBarrelRoll)<0.1f || Quaternion.Angle(transform.localRotation,targetRotationRoll) < 0.01f) {
                 barrelRollLeft = false;
+                counter = 0;
             }   
         }
         else if (barrelRollRight) {
+            counter++;
             transform.localPosition += Vector3.right*(barrelRollLength/barrelRollFrames);
             transform.localEulerAngles += new Vector3(0f,0f,-360f/barrelRollFrames);
-            if (Vector3.Distance(transform.localPosition,targetBarrelRoll)<0.01f || Quaternion.Angle(transform.localRotation,targetRotationRoll) < 0.01f) {
+            if (counter>=barrelRollFrames || Vector3.Distance(transform.localPosition,targetBarrelRoll)<0.01f || Quaternion.Angle(transform.localRotation,targetRotationRoll) < 0.01f) {
                 barrelRollRight = false;
+                counter = 0;
             }            
         }
     }
