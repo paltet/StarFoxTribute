@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6839360930907371628}
   - component: {fileID: 5206866647694474425}
   - component: {fileID: 215213635444268061}
+  - component: {fileID: 6447407981432536109}
   m_Layer: 0
   m_Name: Bandit
   m_TagString: Enemy
@@ -63,6 +64,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   awakePos: 50
+--- !u!114 &6447407981432536109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215213635444268062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d971df014f30cd74abad477e5ef769e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCart: {fileID: 0}
+  maxDist: 5
+  minDist: 5
 --- !u!1 &2287743788912409175
 GameObject:
   m_ObjectHideFlags: 0

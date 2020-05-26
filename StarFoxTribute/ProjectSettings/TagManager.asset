@@ -13,6 +13,7 @@ TagManager:
   - MyCart
   - Music
   - SFX
+  - Turret
   layers:
   - Default
   - TransparentFX
