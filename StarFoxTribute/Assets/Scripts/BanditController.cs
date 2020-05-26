@@ -22,6 +22,7 @@ public class BanditController : MonoBehaviour
 
     SphereCollider detector;
     BoxCollider body;
+    public AudioClip gothit;
 
     // Update is called once per frame
     void Start(){
@@ -104,6 +105,7 @@ public class BanditController : MonoBehaviour
     }
 
     void Destroy(){
+        transform.gameObject.GetComponent<AudioSource>().PlayOneShot(gothit);
         alive = false;
         ParticleSystem ps = transform.GetChild(0).GetComponent<ParticleSystem>();
         ps.Play();
