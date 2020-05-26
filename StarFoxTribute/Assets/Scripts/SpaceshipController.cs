@@ -24,6 +24,7 @@ public class SpaceshipController : MonoBehaviour
     public Transform resetPoint;
     
     public AudioClip laserShot;
+    public AudioClip gameOverVoice;
     public AudioClip gameOver;
     public AudioClip hurt;
     public AudioClip lowHealth;
@@ -63,6 +64,11 @@ public class SpaceshipController : MonoBehaviour
         if (!alive) transform.localScale /= 1.01f;
 
         if (currentHealth <= 0) {
+            if(alive) {
+                alive = false;
+                transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(gameOverVoice);
+                transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(gameOver);
+            }
             StartCoroutine(Die());
         }
     }
@@ -221,7 +227,7 @@ public class SpaceshipController : MonoBehaviour
     
 
     IEnumerator Die(){
-        transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(gameOver,0.8f);
+        //transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(gameOver,0.8f);
         levelMusic.GetComponent<AudioSource>().Stop();
         ParticleSystem ps = transform.Find("Explosion").GetComponent<ParticleSystem>();
         ps.Play();
