@@ -12,6 +12,9 @@ TagManager:
   - EnemyCart
   - MyCart
   - Music
+  - SFX
+  - Turret
+  - Spawner
   layers:
   - Default
   - TransparentFX

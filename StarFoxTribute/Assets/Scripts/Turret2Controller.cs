@@ -10,6 +10,8 @@ public class Turret2Controller : MonoBehaviour
     public float laserCount = 8;
     public GameObject ship;
     public GameObject laserPrefab;
+    public AudioClip exploding;
+    public AudioClip gothit;
 
     bool triggered = false;
     float timer;
@@ -40,6 +42,7 @@ public class Turret2Controller : MonoBehaviour
         this.transform.GetChild(0).transform.Translate(new Vector3(0, -0.5f, 0), Space.Self);
         this.transform.GetChild(1).transform.Translate(new Vector3(0, 0.5f, 0), Space.Self);
         triggered = true;
+        //transform.gameObject.GetComponent<AudioSource>().PlayOneShot(loading);
     }
 
     void Explode(){
@@ -52,8 +55,20 @@ public class Turret2Controller : MonoBehaviour
             transform.Rotate(new Vector3(0, angle, 0), Space.Self);
 
         }
+        transform.gameObject.GetComponent<AudioSource>().PlayOneShot(exploding);
         ParticleSystem exp = transform.GetChild(2).GetComponent<ParticleSystem>();
         exp.Play();
-        Destroy(gameObject, exp.duration);
+        Destroy(gameObject, Mathf.Max(exp.duration,exploding.length));
+    }
+
+    void OnTriggerEnter(Collider other){
+        if (other.gameObject.tag == "MyLaser"){
+            transform.gameObject.GetComponent<AudioSource>().PlayOneShot(gothit);
+            alive = false;
+            ParticleSystem exp = transform.GetChild(2).GetComponent<ParticleSystem>();
+            exp.Play();
+            Destroy(gameObject, exp.duration);
+            TimeFreeze.INSTANCE.FreezeTime(6);
+        }
     }
 }

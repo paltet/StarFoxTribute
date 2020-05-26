@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy2Controller : MonoBehaviour
 {
     public GameObject asteroid;
+    public GameObject asteroid2;
     public GameObject turret;
     public float turretProbability = 0.1f;
     public float enemySpeed = 1.0f;
@@ -18,6 +19,7 @@ public class Enemy2Controller : MonoBehaviour
     public float maxHealth = 20f;
 
     public float currentHealth;
+    public AudioClip gothit;
 
     bool alive = true;
 
@@ -70,13 +72,19 @@ public class Enemy2Controller : MonoBehaviour
     {
         float prob = Random.Range(0f,1f);
         if (prob <= (1f-turretProbability)) {
-            spawned = Instantiate(asteroid, transform.position, Quaternion.identity);
+            if (prob <= (1f-turretProbability)/2f)
+                spawned = Instantiate(asteroid, transform.position, Quaternion.identity);
+            else
+                spawned = Instantiate(asteroid2, transform.position, Quaternion.identity);
             cartPos = transform.parent.position;
             Destroy(spawned,4.0f);
         }
         else {
             spawned = Instantiate(turret, transform.position, Quaternion.identity);
-            spawned.transform.GetComponent<Turret2Controller>().ship = transform.parent.gameObject;
+            //Potser ajustar aquests parametres
+            spawned.transform.GetComponent<Turret2Controller>().range /= 2.5f;
+            spawned.transform.GetComponent<Turret2Controller>().explosionTime /= 2.5f;
+            spawned.transform.GetComponent<Turret2Controller>().ship = transform.parent.GetComponent<MaintainDistance>().playerCart;
             cartPos = transform.parent.position;
         }
     }
@@ -91,10 +99,12 @@ public class Enemy2Controller : MonoBehaviour
     }
 
     void Hit(){
+        transform.gameObject.GetComponent<AudioSource>().PlayOneShot(gothit);
         if (transform.childCount > 4) {
             ParticleSystem exp = transform.Find("FlashHit").gameObject.GetComponent<ParticleSystem>();
             exp.Play();
         }
+        TimeFreeze.INSTANCE.FreezeTime(2);
     }
 
     void Death(){
@@ -109,6 +119,7 @@ public class Enemy2Controller : MonoBehaviour
             exp.transform.parent = null;
             InvokeRepeating("Reduce",0f,0.05f);
             Invoke("CancelInvoke",0.6f*t);
+            TimeFreeze.INSTANCE.FreezeTime(6);
         }
     }
 

@@ -24,9 +24,11 @@ public class SpaceshipController : MonoBehaviour
     public Transform resetPoint;
     
     public AudioClip laserShot;
+    public AudioClip gameOverVoice;
     public AudioClip gameOver;
     public AudioClip hurt;
-
+    public AudioClip lowHealth;
+    public AudioClip shootRocks;
     public float maxHealth = 100;
     public float currentHealth;
 
@@ -40,6 +42,7 @@ public class SpaceshipController : MonoBehaviour
     bool barrelRollRight = false;
     public float barrelRollLength = 4.0f;
     public float barrelRollFrames = 60f;
+    float counter;
     Vector3 targetBarrelRoll;
     Quaternion targetRotationRoll;
 
@@ -48,18 +51,29 @@ public class SpaceshipController : MonoBehaviour
 
 
     void Start(){
+        counter = 0;
         currentHealth = maxHealth;
         originalCartSpeed = transform.parent.GetComponent<CinemachineDollyCart>().m_Speed;
     }
 
     void Update(){
         if (Input.GetMouseButtonDown(0)){
-            Shoot();
+            if(!Camera.main.GetComponent<SceneController>().endScene && Time.timeScale > 0)
+                Shoot();
         }
-        BarrelRoll();
+        if(Time.timeScale>0)
+            BarrelRoll();
         if (!alive) transform.localScale /= 1.01f;
 
-        if (currentHealth <= 0) StartCoroutine(Die());
+        if (currentHealth <= 0) {
+            if(alive) {
+                alive = false;
+                transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().pitch = 1;
+                transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(gameOverVoice);
+                transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(gameOver);
+            }
+            StartCoroutine(Die());
+        }
     }
     
     // Update is called once per frame
@@ -107,24 +121,30 @@ public class SpaceshipController : MonoBehaviour
             barrelRollLeft = true;
             targetRotationRoll = transform.localRotation;
             targetBarrelRoll = transform.localPosition+Vector3.left*barrelRollLength;
+            counter = 0;
         }
         if (Input.GetKeyDown("e") && !barrelRollLeft && !barrelRollRight){
             barrelRollRight = true;
             targetRotationRoll = transform.localRotation;
             targetBarrelRoll = transform.localPosition+Vector3.right*barrelRollLength;
+            counter = 0;
         }
         if (barrelRollLeft) {
+            counter++;
             transform.localPosition += Vector3.left*(barrelRollLength/barrelRollFrames);
             transform.localEulerAngles += new Vector3(0f,0f,360f/barrelRollFrames);
-            if (Vector3.Distance(transform.localPosition,targetBarrelRoll)<0.1f || Quaternion.Angle(transform.localRotation,targetRotationRoll) < 0.01f) {
+            if (counter>=barrelRollFrames || Vector3.Distance(transform.localPosition,targetBarrelRoll)<0.1f || Quaternion.Angle(transform.localRotation,targetRotationRoll) < 0.01f) {
                 barrelRollLeft = false;
+                counter = 0;
             }   
         }
         else if (barrelRollRight) {
+            counter++;
             transform.localPosition += Vector3.right*(barrelRollLength/barrelRollFrames);
             transform.localEulerAngles += new Vector3(0f,0f,-360f/barrelRollFrames);
-            if (Vector3.Distance(transform.localPosition,targetBarrelRoll)<0.01f || Quaternion.Angle(transform.localRotation,targetRotationRoll) < 0.01f) {
+            if (counter>=barrelRollFrames || Vector3.Distance(transform.localPosition,targetBarrelRoll)<0.01f || Quaternion.Angle(transform.localRotation,targetRotationRoll) < 0.01f) {
                 barrelRollRight = false;
+                counter = 0;
             }            
         }
     }
@@ -136,19 +156,22 @@ public class SpaceshipController : MonoBehaviour
         else return max;
     }
 
-    void Shoot(){
+    void Shoot(){        
         Instantiate(laserPrefab, shootPointLeft.position, shootPointLeft.rotation);
         Instantiate(laserPrefab, shootPointRight.position, shootPointRight.rotation);
+        transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().pitch = Random.Range(0.8f,1.2f);
         transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(laserShot,1f);
     }
 
     void Hit(){
+        transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().pitch = 1;
         transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(hurt,1f);
         ParticleSystem exp = transform.Find("FlashHit").gameObject.GetComponent<ParticleSystem>();
         exp.Play();
     }
 
     void OnTriggerEnter(Collider other){
+        float healthBeforeHit = currentHealth;
         if (other.gameObject.tag == "Terrain"){
             modifyHealth(-5);
             Hit();
@@ -158,10 +181,15 @@ public class SpaceshipController : MonoBehaviour
             modifyHealth(-2);
             Hit();
             Destroy(other.gameObject);
-        } else if (other.gameObject.tag == "Asteroid"){
+            Camera.main.GetComponent<CameraShake>().ShakeCamera(0.2f,0.1f);
+        } else if (other.gameObject.tag == "Asteroid" || other.gameObject.tag == "Turret"){
+            transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(shootRocks);
             modifyHealth(-5);
             Hit();
             Brake();
+        }
+        if(healthBeforeHit > 0.3f*maxHealth && currentHealth <= 0.3f*maxHealth) {
+            transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(lowHealth);
         }
     }
 
@@ -181,6 +209,7 @@ public class SpaceshipController : MonoBehaviour
     }
 
     void Brake() {
+        Camera.main.GetComponent<CameraShake>().ShakeCamera(0.8f,0.2f);
         if (!Camera.main.GetComponent<SceneController>().godMode) {
             transform.parent.GetComponent<CinemachineDollyCart>().m_Speed = 1;
             InvokeRepeating("Accelerate",0.0f,0.1f);
@@ -205,11 +234,11 @@ public class SpaceshipController : MonoBehaviour
     
 
     IEnumerator Die(){
-        transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(gameOver,1f);
+        //transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(gameOver,0.8f);
         levelMusic.GetComponent<AudioSource>().Stop();
         ParticleSystem ps = transform.Find("Explosion").GetComponent<ParticleSystem>();
         ps.Play();
-        yield return new WaitForSeconds(ps.main.duration);
+        yield return new WaitForSeconds(ps.main.duration);        
         Camera.main.GetComponent<SceneController>().DieScene();
         //Destroy(gameObject);
     }

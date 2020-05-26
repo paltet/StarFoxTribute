@@ -12,24 +12,43 @@ public class SceneController : MonoBehaviour
     public GameObject healthBar;
     public GameObject godModeUI;
     public GameObject dieUI;
+    public GameObject countDownUI;
 
-    public bool godMode = false;    
-    public float duration;
+    public AudioSource levelMusic;
+    public AudioSource SFX;
+    public AudioClip endMusic;
+    public AudioClip pauseSound;
+    public AudioClip unpauseSound;
+    public AudioClip countdown;
+
+    public bool godMode = false;
+    public bool endScene = false;  
+    //public float duration;
 
     void Awake()
-    {               
+    {
+        SFX.PlayOneShot(countdown);
         StartCoroutine(WaitInit());
     }
 
     IEnumerator WaitInit()
     {
+        countDownUI = transform.Find("Canvas").Find("CountDown").gameObject;
         Time.timeScale = 0;
         GameIsPaused = true;
         // Activate countingDownCanvas
-        yield return new WaitForSecondsRealtime(duration);
-        // Deactivate countingDownCanvas
+        countDownUI.transform.GetChild(0).gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(0.955f); //time of clip
+        countDownUI.transform.GetChild(0).gameObject.SetActive(false);
+        countDownUI.transform.GetChild(1).gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(0.955f); //time of clip
+        countDownUI.transform.GetChild(1).gameObject.SetActive(false);
+        countDownUI.transform.GetChild(2).gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(1.1f); //time of clip
+        countDownUI.SetActive(false);
         Time.timeScale = 1;
         GameIsPaused = false;
+        levelMusic.Play();
     }
 
     // Update is called once per frame
@@ -51,6 +70,8 @@ public class SceneController : MonoBehaviour
 
     public void Resume ()
     {
+        SFX.PlayOneShot(unpauseSound);
+        levelMusic.UnPause();
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -58,6 +79,8 @@ public class SceneController : MonoBehaviour
 
     void Pause ()
     {
+        levelMusic.Pause();
+        SFX.PlayOneShot(pauseSound);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -69,11 +92,14 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
-    public  void EndScene ()
+    public void EndScene ()
     {
+        endScene = true;
         endUI.SetActive(true);
         aimTarget.SetActive(false);
         healthBar.SetActive(false);
+        levelMusic.Stop();
+        levelMusic.PlayOneShot(endMusic);
         //Time.timeScale = 0f;
         //SceneManager.LoadScene("Menu");
 

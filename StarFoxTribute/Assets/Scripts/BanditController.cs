@@ -22,6 +22,8 @@ public class BanditController : MonoBehaviour
 
     SphereCollider detector;
     BoxCollider body;
+    public AudioClip gothit;
+    public AudioClip shot;
 
     // Update is called once per frame
     void Start(){
@@ -90,6 +92,7 @@ public class BanditController : MonoBehaviour
             if (vulnerable){
                 Destroy();
                 Destroy(c.gameObject);
+                TimeFreeze.INSTANCE.FreezeTime(6);
             } else {
                 changePosition();
             }
@@ -104,6 +107,8 @@ public class BanditController : MonoBehaviour
     }
 
     void Destroy(){
+        transform.gameObject.GetComponent<AudioSource>().pitch = 1;
+        transform.gameObject.GetComponent<AudioSource>().PlayOneShot(gothit);
         alive = false;
         ParticleSystem ps = transform.GetChild(0).GetComponent<ParticleSystem>();
         ps.Play();
@@ -111,6 +116,8 @@ public class BanditController : MonoBehaviour
     }
 
     IEnumerator Shoot(float delay){
+        transform.gameObject.GetComponent<AudioSource>().pitch = Random.Range(0.8f,1.2f);
+        transform.gameObject.GetComponent<AudioSource>().PlayOneShot(shot,1.0f);
         Instantiate(laserPrefab, shootingPoint.position, shootingPoint.rotation);
         yield return new WaitForSeconds(delay);
         Instantiate(laserPrefab, shootingPoint.position, shootingPoint.rotation);

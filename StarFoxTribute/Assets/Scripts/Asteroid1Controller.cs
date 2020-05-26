@@ -8,6 +8,8 @@ public class Asteroid1Controller : MonoBehaviour
 
     Vector3 rotationVector;
 
+    public AudioClip gothit;
+
     void Start() {
         rotationVector = Random.insideUnitSphere.normalized;
     }
@@ -24,10 +26,17 @@ public class Asteroid1Controller : MonoBehaviour
         else if (tag == "MyLaser") {
             Destroy(other.gameObject);
             Explode();
+            TimeFreeze.INSTANCE.FreezeTime(6);
         }
     }
 
     void Explode() {
+        if(transform.parent != null) {
+            transform.parent.gameObject.GetComponent<AudioSource>().PlayOneShot(gothit);
+        }
+        else {
+            GameObject.Find("SFX").GetComponent<AudioSource>().PlayOneShot(gothit);
+        }
         if (transform.childCount > 0) {
             ParticleSystem exp = transform.GetChild(0).GetComponent<ParticleSystem>();
             exp.Play();
