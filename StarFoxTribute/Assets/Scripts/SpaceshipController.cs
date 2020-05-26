@@ -58,7 +58,7 @@ public class SpaceshipController : MonoBehaviour
 
     void Update(){
         if (Input.GetMouseButtonDown(0)){
-            if(!Camera.main.GetComponent<SceneController>().endScene)
+            if(!Camera.main.GetComponent<SceneController>().endScene && Time.timeScale > 0)
                 Shoot();
         }
         if(Time.timeScale>0)
@@ -162,6 +162,7 @@ public class SpaceshipController : MonoBehaviour
     }
 
     void Hit(){
+        Camera.main.GetComponent<CameraShake>().ShakeCamera(1f,0.2f);
         transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(hurt,1f);
         ParticleSystem exp = transform.Find("FlashHit").gameObject.GetComponent<ParticleSystem>();
         exp.Play();

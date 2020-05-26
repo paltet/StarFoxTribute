@@ -1164,7 +1164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 321654866, guid: e03556c06ced51043b4d037529257ad6, type: 3}
       propertyPath: barrelRollFrames
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 930562024103421446, guid: e03556c06ced51043b4d037529257ad6,
         type: 3}
@@ -2731,6 +2731,16 @@ PrefabInstance:
     - target: {fileID: 7482261123364756693, guid: 12a94f8d3c51c8c43a3219580af6aa98,
         type: 3}
       propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100258636905390581, guid: 12a94f8d3c51c8c43a3219580af6aa98,
+        type: 3}
+      propertyPath: shakeDuration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100258636905390581, guid: 12a94f8d3c51c8c43a3219580af6aa98,
+        type: 3}
+      propertyPath: shakeAmount
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8769846998232579880, guid: 12a94f8d3c51c8c43a3219580af6aa98,

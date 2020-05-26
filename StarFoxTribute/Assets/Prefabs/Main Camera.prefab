@@ -778,6 +778,7 @@ GameObject:
   - component: {fileID: 2264289115623167592}
   - component: {fileID: 2264289115623167593}
   - component: {fileID: 2264289115623167598}
+  - component: {fileID: 8100258636905390581}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -895,6 +896,24 @@ MonoBehaviour:
   unpauseSound: {fileID: 8300000, guid: 85480b9579e9151459503badcc58ff39, type: 3}
   countdown: {fileID: 8300000, guid: e2943bc6753626a4d9a66344715d6b3d, type: 3}
   godMode: 0
+  endScene: 0
+--- !u!114 &8100258636905390581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264289115623167599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0cb4e1c06ebbc44a81a3651fc877b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugMode: 0
+  shakeAmount: 0
+  shakeDuration: 0
+  smooth: 0
+  smoothAmount: 5
 --- !u!1 &2575380232830186253
 GameObject:
   m_ObjectHideFlags: 0
