@@ -12,6 +12,7 @@ public class SceneController : MonoBehaviour
     public GameObject healthBar;
     public GameObject godModeUI;
     public GameObject dieUI;
+    public GameObject countDownUI;
 
     public AudioSource levelMusic;
     public AudioSource SFX;
@@ -31,11 +32,19 @@ public class SceneController : MonoBehaviour
 
     IEnumerator WaitInit()
     {
+        countDownUI = transform.Find("Canvas").Find("CountDown").gameObject;
         Time.timeScale = 0;
         GameIsPaused = true;
         // Activate countingDownCanvas
-        yield return new WaitForSecondsRealtime(3.1f); //time of clip
-        // Deactivate countingDownCanvas
+        countDownUI.transform.GetChild(0).gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(0.955f); //time of clip
+        countDownUI.transform.GetChild(0).gameObject.SetActive(false);
+        countDownUI.transform.GetChild(1).gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(0.955f); //time of clip
+        countDownUI.transform.GetChild(1).gameObject.SetActive(false);
+        countDownUI.transform.GetChild(2).gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(1.1f); //time of clip
+        countDownUI.SetActive(false);
         Time.timeScale = 1;
         GameIsPaused = false;
         levelMusic.Play();
