@@ -26,7 +26,7 @@ public class SpaceshipController : MonoBehaviour
     public AudioClip laserShot;
     public AudioClip gameOver;
     public AudioClip hurt;
-
+    public AudioClip lowHealth;
     public float maxHealth = 100;
     public float currentHealth;
 
@@ -61,7 +61,9 @@ public class SpaceshipController : MonoBehaviour
         BarrelRoll();
         if (!alive) transform.localScale /= 1.01f;
 
-        if (currentHealth <= 0) StartCoroutine(Die());
+        if (currentHealth <= 0) {
+            StartCoroutine(Die());
+        }
     }
     
     // Update is called once per frame
@@ -157,6 +159,7 @@ public class SpaceshipController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
+        float healthBeforeHit = currentHealth;
         if (other.gameObject.tag == "Terrain"){
             modifyHealth(-5);
             Hit();
@@ -170,6 +173,9 @@ public class SpaceshipController : MonoBehaviour
             modifyHealth(-5);
             Hit();
             Brake();
+        }
+        if(healthBeforeHit > 0.3f*maxHealth && currentHealth <= 0.3f*maxHealth) {
+            transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(lowHealth);
         }
     }
 
@@ -213,11 +219,11 @@ public class SpaceshipController : MonoBehaviour
     
 
     IEnumerator Die(){
-        transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(gameOver,1f);
+        transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(gameOver,0.8f);
         levelMusic.GetComponent<AudioSource>().Stop();
         ParticleSystem ps = transform.Find("Explosion").GetComponent<ParticleSystem>();
         ps.Play();
-        yield return new WaitForSeconds(ps.main.duration);
+        yield return new WaitForSeconds(ps.main.duration);        
         Camera.main.GetComponent<SceneController>().DieScene();
         //Destroy(gameObject);
     }
