@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationRate: 30
   length: 10
-  gothit: {fileID: 8300000, guid: 83876789f31e72e41ab41c70a56de12a, type: 3}
+  gothit: {fileID: 8300000, guid: 9b0667c3a77c61b4f802d8eddcb3c2a6, type: 3}
 --- !u!82 &-6285757735996853029
 AudioSource:
   m_ObjectHideFlags: 0
