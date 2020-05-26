@@ -177,7 +177,7 @@ public class SpaceshipController : MonoBehaviour
             modifyHealth(-2);
             Hit();
             Destroy(other.gameObject);
-        } else if (other.gameObject.tag == "Asteroid"){
+        } else if (other.gameObject.tag == "Asteroid" || other.gameObject.tag == "Turret"){
             transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(shootRocks);
             modifyHealth(-5);
             Hit();

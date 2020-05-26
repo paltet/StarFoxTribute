@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2485561871495964351}
   m_Layer: 0
   m_Name: Turret2
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,7 +182,6 @@ MonoBehaviour:
   laserPrefab: {fileID: 7828319054285866069, guid: e1fa34be4046c6a4881ca25fa29c2747,
     type: 3}
   exploding: {fileID: 8300000, guid: 1ecd04c15717e314282bf193a68f6857, type: 3}
-  loading: {fileID: 8300000, guid: 3d34157f374ee9f42a41bea65cd55d49, type: 3}
 --- !u!82 &2485561871495964351
 AudioSource:
   m_ObjectHideFlags: 0
