@@ -27,6 +27,7 @@ public class SpaceshipController : MonoBehaviour
     public AudioClip gameOver;
     public AudioClip hurt;
     public AudioClip lowHealth;
+    public AudioClip shootRocks;
     public float maxHealth = 100;
     public float currentHealth;
 
@@ -170,6 +171,7 @@ public class SpaceshipController : MonoBehaviour
             Hit();
             Destroy(other.gameObject);
         } else if (other.gameObject.tag == "Asteroid"){
+            transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(shootRocks);
             modifyHealth(-5);
             Hit();
             Brake();
