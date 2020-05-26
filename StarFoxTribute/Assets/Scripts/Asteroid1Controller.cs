@@ -26,6 +26,7 @@ public class Asteroid1Controller : MonoBehaviour
         else if (tag == "MyLaser") {
             Destroy(other.gameObject);
             Explode();
+            TimeFreeze.INSTANCE.FreezeTime(6);
         }
     }
 

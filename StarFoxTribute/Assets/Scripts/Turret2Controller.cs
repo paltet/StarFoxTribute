@@ -68,6 +68,7 @@ public class Turret2Controller : MonoBehaviour
             ParticleSystem exp = transform.GetChild(2).GetComponent<ParticleSystem>();
             exp.Play();
             Destroy(gameObject, exp.duration);
+            TimeFreeze.INSTANCE.FreezeTime(6);
         }
     }
 }

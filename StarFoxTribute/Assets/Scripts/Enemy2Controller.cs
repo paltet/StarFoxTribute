@@ -104,6 +104,7 @@ public class Enemy2Controller : MonoBehaviour
             ParticleSystem exp = transform.Find("FlashHit").gameObject.GetComponent<ParticleSystem>();
             exp.Play();
         }
+        TimeFreeze.INSTANCE.FreezeTime(2);
     }
 
     void Death(){
@@ -118,6 +119,7 @@ public class Enemy2Controller : MonoBehaviour
             exp.transform.parent = null;
             InvokeRepeating("Reduce",0f,0.05f);
             Invoke("CancelInvoke",0.6f*t);
+            TimeFreeze.INSTANCE.FreezeTime(6);
         }
     }
 

@@ -4982,6 +4982,7 @@ MonoBehaviour:
   range: 8
   distance: 3
   gothit: {fileID: 8300000, guid: f003f245047d11d4987702d0f9f65cdd, type: 3}
+  shot: {fileID: 8300000, guid: 920730cf432060641ad26e49b7a41170, type: 3}
 --- !u!135 &4434471692586123000
 SphereCollider:
   m_ObjectHideFlags: 0

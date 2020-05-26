@@ -133,6 +133,7 @@ MonoBehaviour:
     type: 3}
   shootingPoint: {fileID: 2860789546320366903}
   gothit: {fileID: 8300000, guid: f003f245047d11d4987702d0f9f65cdd, type: 3}
+  shot: {fileID: 8300000, guid: a365166f93f3179459256d0e0b067732, type: 3}
 --- !u!82 &-6893260886309884883
 AudioSource:
   m_ObjectHideFlags: 0
