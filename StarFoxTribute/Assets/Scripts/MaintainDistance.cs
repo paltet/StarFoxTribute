@@ -9,13 +9,16 @@ public class MaintainDistance : MonoBehaviour
     public float maxDist = 5.0f;
     float dist;
     public float minDist = 5.0f;
+    public bool isAutoSpawned = false;
     float speed;
     // Start is called before the first frame update
     void Start()
     {
-        dist = transform.GetComponent<CinemachineDollyCart>().m_Position;
-        maxDist = dist + maxDist;
-        minDist = dist - minDist;
+        if(!isAutoSpawned) {
+            dist = transform.GetComponent<CinemachineDollyCart>().m_Position;
+            maxDist = dist + maxDist;
+            minDist = dist - minDist;
+        }
         speed = transform.GetComponent<CinemachineDollyCart>().m_Speed;
     }
 
@@ -26,7 +29,10 @@ public class MaintainDistance : MonoBehaviour
         float playerPos = playerCart.transform.GetComponent<CinemachineDollyCart>().m_Position;
         if(Mathf.Abs((myPos-playerPos)-dist) <= 1.0f) {
             transform.GetComponent<CinemachineDollyCart>().m_Speed = speed;
-        }  
+        }
+        else if((myPos-playerPos) >= 2*maxDist) {
+            transform.GetComponent<CinemachineDollyCart>().m_Speed = 0.3f*speed;
+        }
         else if((myPos-playerPos) >= maxDist) {
             transform.GetComponent<CinemachineDollyCart>().m_Speed = 0.8f*speed;
         }

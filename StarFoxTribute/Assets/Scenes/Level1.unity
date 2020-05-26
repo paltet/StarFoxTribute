@@ -2180,6 +2180,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1117832610}
     m_Modifications:
+    - target: {fileID: 215213635444268061, guid: b212e2ebd57cb0b47ae2158fe1bcf785,
+        type: 3}
+      propertyPath: awakePos
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 215213635444268062, guid: b212e2ebd57cb0b47ae2158fe1bcf785,
         type: 3}
       propertyPath: m_Name
@@ -2931,6 +2936,32 @@ PrefabInstance:
       propertyPath: ship
       value: 
       objectReference: {fileID: 1036032160}
+    - target: {fileID: 5343864691554047084, guid: b1d228d2b9b4adb47956e50b39a37516,
+        type: 3}
+      propertyPath: banditProb
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343864691554047084, guid: b1d228d2b9b4adb47956e50b39a37516,
+        type: 3}
+      propertyPath: bandit
+      value: 
+      objectReference: {fileID: 215213635444268062, guid: b212e2ebd57cb0b47ae2158fe1bcf785,
+        type: 3}
+    - target: {fileID: 5343864691554047084, guid: b1d228d2b9b4adb47956e50b39a37516,
+        type: 3}
+      propertyPath: playerCart
+      value: 
+      objectReference: {fileID: 1399723182}
+    - target: {fileID: 5343864691554047084, guid: b1d228d2b9b4adb47956e50b39a37516,
+        type: 3}
+      propertyPath: minD
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343864691554047084, guid: b1d228d2b9b4adb47956e50b39a37516,
+        type: 3}
+      propertyPath: maxD
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 5343864691554047086, guid: b1d228d2b9b4adb47956e50b39a37516,
         type: 3}
       propertyPath: m_Path
