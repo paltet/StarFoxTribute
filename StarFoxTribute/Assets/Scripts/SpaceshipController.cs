@@ -61,7 +61,8 @@ public class SpaceshipController : MonoBehaviour
             if(!Camera.main.GetComponent<SceneController>().endScene)
                 Shoot();
         }
-        BarrelRoll();
+        if(Time.timeScale>0)
+            BarrelRoll();
         if (!alive) transform.localScale /= 1.01f;
 
         if (currentHealth <= 0) {
