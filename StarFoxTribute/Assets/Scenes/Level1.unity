@@ -1787,6 +1787,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2730368767734318320, guid: 4aa0f05551c887f489d69f0cfb17f93a,
+        type: 3}
+      propertyPath: adjustTime
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 2730368767734318321, guid: 4aa0f05551c887f489d69f0cfb17f93a,
         type: 3}
       propertyPath: m_Name
@@ -2573,6 +2578,16 @@ PrefabInstance:
       propertyPath: crosshairImage
       value: 
       objectReference: {fileID: 2800000, guid: c9313c36c8ec70049ad0a6e42ee9cbcf, type: 3}
+    - target: {fileID: 2575767592838156284, guid: 12a94f8d3c51c8c43a3219580af6aa98,
+        type: 3}
+      propertyPath: range
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575767592838156284, guid: 12a94f8d3c51c8c43a3219580af6aa98,
+        type: 3}
+      propertyPath: crosshairSize
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2575767592838156286, guid: 12a94f8d3c51c8c43a3219580af6aa98,
         type: 3}
       propertyPath: m_Enabled

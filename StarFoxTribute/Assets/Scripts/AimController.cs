@@ -11,16 +11,18 @@ public class AimController : MonoBehaviour
     float yMin = Screen.height/2 - 25;
     public Texture2D crosshairImage;
 
+    public float crosshairSize = 1;
+
     // Update is called once per frame
 
     void OnGUI() {
         if(Time.timeScale>0) {
             // draw on current mouse position
-            xMin = Screen.width - (Screen.width - Input.mousePosition.x) - (crosshairImage.width / 20);
-            yMin = (Screen.height - Input.mousePosition.y) - (crosshairImage.height / 20);
+            xMin = Screen.width - (Screen.width - Input.mousePosition.x) - (crosshairSize*crosshairImage.width / 20);
+            yMin = (Screen.height - Input.mousePosition.y) - (crosshairSize*crosshairImage.height / 20);
         }
         if(Camera.main.GetComponent<SceneController>().playing)
-            GUI.DrawTexture(new Rect(xMin, yMin, crosshairImage.width/10, crosshairImage.height/10), crosshairImage);
+            GUI.DrawTexture(new Rect(xMin, yMin, crosshairSize*crosshairImage.width/10, crosshairSize*crosshairImage.height/10), crosshairImage);
     }
 
     void FixedUpdate()

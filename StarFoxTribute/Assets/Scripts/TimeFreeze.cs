@@ -6,6 +6,8 @@ public class TimeFreeze : MonoBehaviour
 {
     public static TimeFreeze INSTANCE;
 
+    public float adjustTime = 1f;
+
     private int framesToFreeze = 0;
     private bool act = false;
 
@@ -30,7 +32,8 @@ public class TimeFreeze : MonoBehaviour
     }
 
     public void FreezeTime(int numberOfFrames) {
-        framesToFreeze = numberOfFrames;
+        float tmp = numberOfFrames*adjustTime;
+        framesToFreeze = Mathf.RoundToInt(tmp);
         act = true;
     }
 }
