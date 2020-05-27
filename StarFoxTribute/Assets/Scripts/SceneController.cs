@@ -85,6 +85,7 @@ public class SceneController : MonoBehaviour
 
     void Pause ()
     {
+        Camera.main.GetComponent<CameraShake>().StopShaking();
         levelMusic.Pause();
         SFX.PlayOneShot(pauseSound);
         pauseMenuUI.SetActive(true);
@@ -102,6 +103,7 @@ public class SceneController : MonoBehaviour
 
     public void EndScene ()
     {
+        Camera.main.GetComponent<CameraShake>().StopShaking();
         Cursor.visible = true;
         endScene = true;
         endUI.SetActive(true);
