@@ -2581,12 +2581,17 @@ PrefabInstance:
     - target: {fileID: 2575767592838156284, guid: 12a94f8d3c51c8c43a3219580af6aa98,
         type: 3}
       propertyPath: range
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2575767592838156284, guid: 12a94f8d3c51c8c43a3219580af6aa98,
         type: 3}
       propertyPath: crosshairSize
       value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2575767592838156284, guid: 12a94f8d3c51c8c43a3219580af6aa98,
+        type: 3}
+      propertyPath: crosshairTrespassBoundaries
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2575767592838156286, guid: 12a94f8d3c51c8c43a3219580af6aa98,
         type: 3}
