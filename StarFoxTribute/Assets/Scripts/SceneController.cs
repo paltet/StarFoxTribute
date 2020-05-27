@@ -22,13 +22,16 @@ public class SceneController : MonoBehaviour
     public AudioClip countdown;
 
     public bool godMode = false;
-    public bool endScene = false;  
+    public bool endScene = false;
+    public bool playing = false;
     //public float duration;
 
     void Awake()
     {
+        playing = false;
         SFX.PlayOneShot(countdown);
         StartCoroutine(WaitInit());
+        Cursor.visible = false;
     }
 
     IEnumerator WaitInit()
@@ -48,6 +51,7 @@ public class SceneController : MonoBehaviour
         countDownUI.SetActive(false);
         Time.timeScale = 1;
         GameIsPaused = false;
+        playing = true;
         levelMusic.Play();
     }
 
@@ -70,11 +74,13 @@ public class SceneController : MonoBehaviour
 
     public void Resume ()
     {
+        Cursor.visible = false;
         SFX.PlayOneShot(unpauseSound);
         levelMusic.UnPause();
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        playing = true;
     }
 
     void Pause ()
@@ -84,6 +90,8 @@ public class SceneController : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        Cursor.visible = true;
+        playing = false;
     }
 
     public void LoadMenu ()
@@ -94,22 +102,25 @@ public class SceneController : MonoBehaviour
 
     public void EndScene ()
     {
+        Cursor.visible = true;
         endScene = true;
         endUI.SetActive(true);
         aimTarget.SetActive(false);
         healthBar.SetActive(false);
         levelMusic.Stop();
         levelMusic.PlayOneShot(endMusic);
+        playing = false;
         //Time.timeScale = 0f;
         //SceneManager.LoadScene("Menu");
 
     }
 
     public void DieScene(){
-
+        Cursor.visible = true;
         dieUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        playing = false;
     }
 
     public void Restart(){
