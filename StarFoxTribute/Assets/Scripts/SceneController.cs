@@ -38,7 +38,7 @@ public class SceneController : MonoBehaviour
     {
         countDownUI = transform.Find("Canvas").Find("CountDown").gameObject;
         Time.timeScale = 0;
-        GameIsPaused = true;
+        //GameIsPaused = true;
         // Activate countingDownCanvas
         countDownUI.transform.GetChild(0).gameObject.SetActive(true);
         yield return new WaitForSecondsRealtime(0.955f); //time of clip
