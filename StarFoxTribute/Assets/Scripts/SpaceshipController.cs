@@ -72,6 +72,7 @@ public class SpaceshipController : MonoBehaviour
                 transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(gameOverVoice);
                 transform.Find("AudioSource").gameObject.GetComponent<AudioSource>().PlayOneShot(gameOver);
             }
+            Camera.main.GetComponent<CameraShake>().StopShaking();
             StartCoroutine(Die());
         }
     }

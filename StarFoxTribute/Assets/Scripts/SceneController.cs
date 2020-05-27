@@ -63,8 +63,8 @@ public class SceneController : MonoBehaviour
             if (GameIsPaused)
             {
                 Resume();
-            } 
-            else {
+            }
+            else if (playing) {
                 Pause();
             }
         }
@@ -119,7 +119,7 @@ public class SceneController : MonoBehaviour
         Cursor.visible = true;
         dieUI.SetActive(true);
         Time.timeScale = 0f;
-        GameIsPaused = true;
+        GameIsPaused = false;
         playing = false;
     }
 
