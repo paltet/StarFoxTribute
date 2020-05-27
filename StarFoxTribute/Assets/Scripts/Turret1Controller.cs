@@ -42,15 +42,24 @@ public class Turret1Controller : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        if (other.gameObject.tag == "MyLaser"){
-            transform.gameObject.GetComponent<AudioSource>().pitch = 1;
-            transform.gameObject.GetComponent<AudioSource>().PlayOneShot(gothit);
-            alive = false;
-            ParticleSystem exp = transform.GetChild(2).GetComponent<ParticleSystem>();
-            exp.Play();
-            Destroy(gameObject, exp.duration);
+        string tag = other.gameObject.tag;
+        if (tag == "Player") {            
+            Explode();
+        }
+        else if (tag == "MyLaser") {
+            Destroy(other.gameObject);
+            Explode();
             TimeFreeze.INSTANCE.FreezeTime(6);
         }
+    }
+
+    void Explode(){
+        transform.gameObject.GetComponent<AudioSource>().pitch = 1;
+        transform.gameObject.GetComponent<AudioSource>().PlayOneShot(gothit);
+        alive = false;
+        ParticleSystem exp = transform.GetChild(2).GetComponent<ParticleSystem>();
+        exp.Play();
+        Destroy(gameObject, exp.duration);
     }
 
     void Reduce(){
