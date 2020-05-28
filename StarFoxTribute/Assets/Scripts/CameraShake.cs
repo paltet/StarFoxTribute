@@ -1,5 +1,7 @@
-﻿///Daniel Moore (Firedan1176) - Firedan1176.webs.com/
+﻿///Based on code from Daniel Moore (Firedan1176) - Firedan1176.webs.com/
 ///26 Dec 2015
+///
+///Added StopShaking Function for using on StarFoxTribute project (May 2020)
 ///
 ///Shakes camera parent object
  
@@ -17,6 +19,8 @@ public class CameraShake : MonoBehaviour {
 	float shakePercentage;//A percentage (0-1) representing the amount of shake to be applied when setting rotation.
 	float startAmount;//The initial shake amount (to determine percentage), set when ShakeCamera is called.
 	float startDuration;//The initial shake duration, set when ShakeCamera is called.
+
+	bool stop = false;
  
 	bool isRunning = false;	//Is the coroutine running right now?
  
@@ -24,13 +28,12 @@ public class CameraShake : MonoBehaviour {
 	public float smoothAmount = 5f;//Amount to smooth
  
 	void Start () {
- 
+		stop = false;
 		if(debugMode) ShakeCamera ();
 	}
  
  
 	void ShakeCamera() {
- 
 		startAmount = shakeAmount;//Set default (start) values
 		startDuration = shakeDuration;//Set default (start) values
  
@@ -38,7 +41,7 @@ public class CameraShake : MonoBehaviour {
 	}
  
 	public void ShakeCamera(float amount, float duration) {
- 
+		stop = false; 
 		shakeAmount += amount;//Add to the current amount.
 		startAmount = shakeAmount;//Reset the start amount, to determine percentage.
 		shakeDuration += duration;//Add to the current time.
@@ -46,12 +49,16 @@ public class CameraShake : MonoBehaviour {
  
 		if(!isRunning) StartCoroutine (Shake());//Only call the coroutine if it isn't currently running. Otherwise, just set the variables.
 	}
+
+	public void StopShaking() {
+		stop = true;
+	}
  
  
 	IEnumerator Shake() {
 		isRunning = true;
  
-		while (shakeDuration > 0.01f) {
+		while (shakeDuration > 0.01f && !stop) {
 			Vector3 rotationAmount = Random.insideUnitSphere * shakeAmount;//A Vector3 to add to the Local Rotation
 			rotationAmount.z = 0;//Don't change the Z; it looks funny.
  

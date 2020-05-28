@@ -14,7 +14,6 @@ public class EndPlaneScene : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             SceneController sc = camera.GetComponent<SceneController>();
-            // O fer el que vulguem realment
             sc.EndScene();
         }
         else if(other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Asteroid")) {

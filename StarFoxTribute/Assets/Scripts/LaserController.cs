@@ -21,6 +21,5 @@ public class LaserController : MonoBehaviour
 
     void OnCollisionEnter(Collision c) {
         Destroy(gameObject);
-        //Debug.Log(c.collider);
     }
 }

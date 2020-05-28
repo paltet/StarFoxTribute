@@ -81,7 +81,6 @@ public class Enemy2Controller : MonoBehaviour
         }
         else {
             spawned = Instantiate(turret, transform.position, Quaternion.identity);
-            //Potser ajustar aquests parametres
             spawned.transform.GetComponent<Turret2Controller>().range /= 2.5f;
             spawned.transform.GetComponent<Turret2Controller>().explosionTime /= 2.5f;
             spawned.transform.GetComponent<Turret2Controller>().ship = transform.parent.GetComponent<MaintainDistance>().playerCart;
@@ -113,8 +112,8 @@ public class Enemy2Controller : MonoBehaviour
             CancelInvoke("Spawn");
             ParticleSystem exp = transform.GetChild(4).GetComponent<ParticleSystem>();
             exp.Play();
-            float t = exp.duration;
-            Destroy(exp, t);
+            float t = exp.main.duration;
+            Destroy(exp.gameObject, t);
             Destroy(gameObject, 0.7f*t);
             exp.transform.parent = null;
             InvokeRepeating("Reduce",0f,0.05f);

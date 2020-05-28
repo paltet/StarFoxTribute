@@ -25,7 +25,6 @@ public class BanditController : MonoBehaviour
     public AudioClip gothit;
     public AudioClip shot;
 
-    // Update is called once per frame
     void Start(){
 
         detector = GetComponent<SphereCollider>();
@@ -103,7 +102,6 @@ public class BanditController : MonoBehaviour
         vulnerable = false;
         detector.enabled = true;
         body.enabled = false;
-        //Debug.Log("recovered");
     }
 
     void Destroy(){
