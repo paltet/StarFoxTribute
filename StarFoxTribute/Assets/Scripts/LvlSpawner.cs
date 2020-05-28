@@ -9,7 +9,6 @@ public class LvlSpawner : MonoBehaviour
     public GameObject turret1;
     public GameObject turret2;
     public GameObject bandit;
-    //public GameObject path;
     public GameObject playerCart;
     public GameObject ship;
 
@@ -21,7 +20,6 @@ public class LvlSpawner : MonoBehaviour
     public float width = 10f;
     public float height = 10f;
     public float spawnRate = 7f;
-    // Start is called before the first frame update
     void SpawnAsteroid1() {
         Vector3 newPos = Random.insideUnitCircle.normalized;
         newPos.x*=width;
