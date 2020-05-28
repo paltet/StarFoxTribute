@@ -22,7 +22,7 @@ public class TimeFreeze : MonoBehaviour
     void Update() {
         if(act) {
             if (framesToFreeze > 0) {
-                Time.timeScale = 0;
+                Time.timeScale = 0.05f;
                 framesToFreeze--;
             } else {
                 Time.timeScale = 1;
