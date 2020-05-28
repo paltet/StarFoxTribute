@@ -45,7 +45,7 @@ public class Asteroid2Controller : MonoBehaviour
             exp.Play();
             exp.transform.parent = null; //so particle system doesnt disapear but we can destroy asteroid
             Destroy(gameObject);
-            Destroy(exp,exp.duration);
+            Destroy(exp.gameObject,exp.duration);
         }
     }
 
