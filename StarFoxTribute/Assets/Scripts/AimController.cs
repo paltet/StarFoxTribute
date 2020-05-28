@@ -28,7 +28,7 @@ public class AimController : MonoBehaviour
             mouseX = Mathf.Clamp(mouseX, minx, maxx);
             mouseY = Mathf.Clamp(mouseY, miny, maxy);
         }
-        if(Time.timeScale>0) {
+        if(Time.timeScale==1) {
             xMin = mouseX; //- (crosshairSize*crosshairImage.width / 20);
             yMin = (Screen.height - mouseY);// - (crosshairSize*crosshairImage.height / 20);
         }
