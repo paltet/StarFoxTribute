@@ -1,5 +1,7 @@
-﻿///Daniel Moore (Firedan1176) - Firedan1176.webs.com/
+﻿///Based on code from Daniel Moore (Firedan1176) - Firedan1176.webs.com/
 ///26 Dec 2015
+///
+///Added StopShaking Function for using on StarFoxTribute project (May 2020)
 ///
 ///Shakes camera parent object
  
