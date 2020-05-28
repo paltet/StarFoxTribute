@@ -42,7 +42,6 @@ public class Turret2Controller : MonoBehaviour
         this.transform.GetChild(0).transform.Translate(new Vector3(0, -0.5f, 0), Space.Self);
         this.transform.GetChild(1).transform.Translate(new Vector3(0, 0.5f, 0), Space.Self);
         triggered = true;
-        //transform.gameObject.GetComponent<AudioSource>().PlayOneShot(loading);
     }
 
     void Explode(){
@@ -58,7 +57,7 @@ public class Turret2Controller : MonoBehaviour
         transform.gameObject.GetComponent<AudioSource>().PlayOneShot(exploding);
         ParticleSystem exp = transform.GetChild(2).GetComponent<ParticleSystem>();
         exp.Play();
-        Destroy(gameObject, Mathf.Max(exp.duration,exploding.length));
+        Destroy(gameObject, Mathf.Max(exp.main.duration,exploding.length));
     }
 
     void OnTriggerEnter(Collider other){
@@ -72,13 +71,13 @@ public class Turret2Controller : MonoBehaviour
             TimeFreeze.INSTANCE.FreezeTime(6);
         }
     }
-    
+
     void Killed(){
         transform.gameObject.GetComponent<AudioSource>().pitch = 1;
         transform.gameObject.GetComponent<AudioSource>().PlayOneShot(gothit);
         alive = false;
         ParticleSystem exp = transform.GetChild(2).GetComponent<ParticleSystem>();
         exp.Play();
-        Destroy(gameObject, exp.duration);
+        Destroy(gameObject, exp.main.duration);
     }
 }

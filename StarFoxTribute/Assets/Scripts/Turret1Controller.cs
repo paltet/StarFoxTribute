@@ -38,7 +38,6 @@ public class Turret1Controller : MonoBehaviour
         transform.gameObject.GetComponent<AudioSource>().pitch = Random.Range(0.8f,1.2f);
         transform.gameObject.GetComponent<AudioSource>().PlayOneShot(shot);
         Instantiate(laserPrefab, shootingPoint.position, shootingPoint.rotation);
-        //Debug.Log("shoot");
     }
 
     void OnTriggerEnter(Collider other){
@@ -59,7 +58,7 @@ public class Turret1Controller : MonoBehaviour
         alive = false;
         ParticleSystem exp = transform.GetChild(2).GetComponent<ParticleSystem>();
         exp.Play();
-        Destroy(gameObject, exp.duration);
+        Destroy(gameObject, exp.main.duration);
     }
 
     void Reduce(){
