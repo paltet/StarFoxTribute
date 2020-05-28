@@ -8,8 +8,8 @@ public class AimController : MonoBehaviour
     public Transform ship;
     public float rangeX = 0.25f;
     public float rangeY = 0.3f;
-    float xMin = Screen.width/2 - 25;
-    float yMin = Screen.height/2 - 25;
+    float xMin = Screen.width/2 - 25; //middle of the screen approx
+    float yMin = Screen.height/2 + 25; //middle of the screen approx
     public Texture2D crosshairImage;
     public bool crosshairTrespassBoundaries = false;
     public float crosshairSize = 1;
